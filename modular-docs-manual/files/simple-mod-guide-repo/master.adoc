@@ -1,0 +1,7 @@
+include::attributes.adoc[]
+
+= Documentation for {ProjectName}
+
+include::docs/assembly-1.adoc[leveloffset=+1]
+
+include::docs/assembly-2.adoc[leveloffset=+1]

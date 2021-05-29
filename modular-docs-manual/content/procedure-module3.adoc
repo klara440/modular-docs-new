@@ -1,0 +1,6 @@
+= PROCEDURE: Combine the two cake parts and decorate the product
+
+* Take the pan with the cake out of the oven at the right time (respond to the alarm bleeping)
+* vyklop the cake from the pan, turning it upside down
+* have it acquire room temperature
+* Add the chocolate layer on the top of the corpus applying strokes of brush 

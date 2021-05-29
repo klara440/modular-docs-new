@@ -1,0 +1,32 @@
+[id='assembly-guidelines']
+= Assembly Guidelines
+
+The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.
+
+.Writing the Introduction
+
+The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.
+
+Consider rewording the user story to write the assembly introduction, for example:
+
+* User story: As an administrator, I want to provide external identity, authentication and authorization services for my Atomic Host, so that users from external identity sources can access the Atomic Host.
+* Assembly introduction: As a system administrator, you can use SSSD in a container to provide external identity, authentication, and authorization services for the Atomic Host system. This enables users from external identity sources to authenticate to the Atomic Host.
+
+.Writing Prerequisites
+
+Prerequisites are conditions that must be satisfied before the user can start following the assembly. For details, see xref:writing-prerequisites[Writing Prerequisites].
+
+// [bhardest] - We have a lot of xref-ing in these guidelines. A better approach might be to create a "snippets" .adoc file with snippets of common content (for example, the content about writing prerequisites, which applies to multiple sections). Then we can just include the relevant content from the snippets file wherever it's needed.
+// [asteflova] - Let's do this after we finish reviewing the guidelines for procedures and assemblies.
+
+.Adding Modules
+
+List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include files] to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.
+
+.Adding Additional Resources
+
+Additional resources list links to other material closely related to the contents of the assembly: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
+
+Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.
+
+// [asteflova] This is another candidate for reuse.

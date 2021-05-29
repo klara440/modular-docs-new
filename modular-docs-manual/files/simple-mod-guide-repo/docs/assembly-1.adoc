@@ -1,0 +1,9 @@
+[id='assembly-1']
+= Assembly 1
+:context: assembly-1
+
+include::modules/module-a.adoc[leveloffset=+1]
+
+include::modules/module-b.adoc[leveloffset=+1]
+
+include::modules/module-c.adoc[leveloffset=+1]

@@ -8,11 +8,12 @@ include::common-content/attributes.adoc[]
 
 This chapter is about baking a cake.
 
-include::content/modular-doc-manual.adoc[leveloffset=+1]
+
 include::content/concept-module.adoc[leveloffset=+1]
 
 include::content/procedure-module1.adoc[leveloffset=+1]
 
+[id='icing-procedure']
 include::content/procedure-module2.adoc[leveloffset=+1]
 
 include::content/procedure-module3.adoc[leveloffset=+1]
