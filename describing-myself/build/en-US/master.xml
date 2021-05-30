@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!ENTITY % sgml.features "IGNORE">
+<!ENTITY % xml.features "INCLUDE">
+<!ENTITY % DOCBOOK_ENTS PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/dbcentx.mod">
+%DOCBOOK_ENTS;
+]>
+<?asciidoc-toc maxdepth="3"?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+<info>
+<title>Baking a cake</title>
+<date>2018-03-08</date>
+</info>
+<preface>
+<title>Preface</title>
+<simpara>This chapter is about baking a cake.</simpara>
+</preface>
+<section xml:id="introduction">
+<title>Introduction</title>
+<simpara>This manual provides instructions on how to author modularly structured documentation based on user stories. The manual defines used terminology, describes components that form modular documentation, and instructs writers on how to use provided templates to turn user stories into modular documentation.</simpara>
+</section>
+<section xml:id="understanding-mod-docs">
+<title>Understanding Modular Documentation</title>
+<simpara>This chapter explains what modular documentation is and what it is not.</simpara>
+<section xml:id="what-modular-documentation-is">
+<title>What Modular Documentation Is</title>
+<simpara>Modular documentation is documentation based on <emphasis>modules</emphasis>, which the writer combines into <emphasis>assemblies</emphasis>. An assembly can also include other assemblies.</simpara>
+<important>
+<simpara>Nesting assemblies too deep can create too much complexity, which might make the documentation difficult to use and maintain. If you are worried this might be the case, consider linking to another assembly as an alternative to direct inclusion.</simpara>
+</important>
+<simpara>At Red Hat, we write modular documentation that is based on <emphasis>user-stories</emphasis>. This means that each assembly documents a user story.</simpara>
+<figure>
+<title>Schema of a Module and an Assembly</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/modules_assemblies.png"/>
+</imageobject>
+<textobject><phrase>modules assemblies</phrase></textobject>
+</mediaobject>
+</figure>
+<bridgehead xml:id="_additional_resources" renderas="sect4">Additional Resources</bridgehead>
+<itemizedlist>
+<listitem>
+<simpara>For definitions of the terms we use, including modules, assemblies, and user stories, see <xref linkend="modular-docs-terms-definitions"/>.</simpara>
+</listitem>
+<listitem>
+<simpara>For an explanation of why user-story-based docs are useful, see <link xlink:href="https://mojo.redhat.com/groups/ccs/blog/2017/06/27/from-legacy-docs-to-modular-docs-based-on-user-stories">From Legacy Docs to Modular Docs Based on User Stories</link> in Mojo.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="what-modular-documentation-is-not">
+<title>What Modular Documentation Is Not</title>
+<variablelist>
+<varlistentry>
+<term>Legacy (non-modular) documentation split into small, <emphasis>meaningless</emphasis> pieces</term>
+<listitem>
+<simpara>A module must make sense and provide value on its own, even when read separately from the other modules. The templates included in this manual help ensure this.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>A collection of modules that have no relationship to one another</term>
+<listitem>
+<simpara>An unorganized set of modules is confusing to users. That is why we combine modules into:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Assemblies that are based on user stories</simpara>
+</listitem>
+<listitem>
+<simpara>Deliverables, like a book or help system, that present a structured view of the body of knowledge represented by a set of modules</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Always a linear, book-type model</term>
+<listitem>
+<simpara>Modular documentation is designed to enable you to deliver content flexibly. You can combine modules to build lean, article-based content or large, linear books.</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section xml:id="a-simple-example-of-a-modular-guide">
+<title>A Simple Example of a Modular Guide</title>
+<simpara>Download and unzip <link xlink:href="https://github.com/redhat-documentation/modular-docs/blob/master/modular-docs-manual/files/simple-mod-guide-repo.zip">an example modular guide</link>. The <literal>simple-mod-guide-repo</literal> directory included in the ZIP archive contains a very simple example of a modular guide with assemblies and modules. This section explains the contents of the directory.</simpara>
+<note>
+<simpara>To build the example guide, change into the <literal>simple-mod-guide-repo</literal> directory, issue the <emphasis role="strong">asciidoctor master.adoc</emphasis> command, and open the resulting <literal>master.html</literal> file in your browser.</simpara>
+</note>
+<simpara>The contents of the directory displayed in a tree-like format:</simpara>
+<screen>.
+├── <emphasis role="strong">attributes.adoc</emphasis> <emphasis>&lt;-- File with attributes for the whole book.</emphasis>
+├── <emphasis role="strong">docs</emphasis> <emphasis>&lt;-- Directory with assemblies and modules.</emphasis>
+│   ├── <emphasis role="strong">assembly-1.adoc</emphasis> <emphasis>&lt;-- Assembly files with include statements for modules.</emphasis>
+│   ├── <emphasis role="strong">assembly-2.adoc</emphasis>
+│   └── <emphasis role="strong">modules</emphasis>
+│       ├── <emphasis role="strong">module-a.adoc</emphasis> <emphasis>&lt;-- Module files.</emphasis>
+│       ├── <emphasis role="strong">module-b.adoc</emphasis>
+│       ├── <emphasis role="strong">module-c.adoc</emphasis>
+│       └── <emphasis role="strong">module-d.adoc</emphasis>
+└── <emphasis role="strong">master.adoc</emphasis> <emphasis>&lt;-- Master file that defines the whole book.</emphasis></screen>
+<simpara>To learn more about how a modular guide works, explore the files and directories in this example directory. For example, note that:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>master.adoc</literal> pulls in the <literal>attribute.adoc</literal> file with AsciiDoc attributes, sets the title of the book, and pulls in the assemblies that comprise the book.</simpara>
+</listitem>
+<listitem>
+<simpara>Some of the module files (in the <literal>modules</literal> directory) demonstrate how to reuse a module in multiple assemblies.</simpara>
+</listitem>
+<listitem>
+<simpara>In <literal>module-b.adoc</literal>, the AsciiDoc conditional <literal>ifeval</literal> enables reusing the same module with some differences.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Feel free to experiment with the example guide: create new assemblies and modules, reuse modules, introduce new AsciiDoc conditionals.</simpara>
+</section>
+</section>
+<section xml:id="writing-mod-docs">
+<title>Writing Modular Documentation</title>
+<simpara>Assemblies can include various types of modules. Use the instructions in the following sections to create modules and combine them into assemblies.</simpara>
+<section xml:id="_creating_modules">
+<title>Creating Modules</title>
+<simpara>Follow these guidelines to create different types of modules:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link linkend="creating-concept-modules">Concept Module</link></simpara>
+</listitem>
+<listitem>
+<simpara><link linkend="creating-procedure-modules">Procedure Module</link></simpara>
+</listitem>
+<listitem>
+<simpara><link linkend="reference-module-guidelines">Reference Module</link></simpara>
+</listitem>
+</itemizedlist>
+<simpara>See <xref linkend="appendix-examples"/> for real-world examples of assemblies, modules, and their individual parts.</simpara>
+<section xml:id="creating-concept-modules">
+<title>Creating Concept Modules</title>
+<simpara>This section explains what a concept module is and provides recommended practices for writing concept modules.</simpara>
+<section xml:id="concept-module-definition">
+<title>Concept Module Definition</title>
+<simpara>A concept module is an "understand" module. Concept modules give the user descriptions and explanations needed to understand and use a product.</simpara>
+</section>
+<section xml:id="concept-module-guidelines">
+<title>Concept Module Guidelines</title>
+<simpara>The required part of a procedure module is the concept explanation. Optionally, the module can also include an introduction and additional resources.</simpara>
+<simpara>When planning a concept module, look at nouns in related procedure modules and assemblies to find the concepts to explain to users. Explain only things that are visible to users. Even if a concept is interesting, it probably does not require explanation if it is not visible to users.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/concept-diagram.png"/>
+</imageobject>
+<textobject><phrase>concept diagram</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<formalpara xml:id="concept-writing-the-introduction">
+<title>Writing the Introduction</title>
+<para>The introduction to a concept module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the concept is useful without having to read the entire module.</para>
+</formalpara>
+<simpara>The introduction typically answers the following questions:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>What is the concept?</simpara>
+</listitem>
+<listitem>
+<simpara>Why should the user care about the concept?</simpara>
+</listitem>
+</itemizedlist>
+<formalpara xml:id="concept-writing-the-concept-explanation">
+<title>Writing the Concept Explanation</title>
+<para>The concept explanation describes the subject of the concept module.</para>
+</formalpara>
+<simpara>Apart from paragraphs, you can use other AsciiDoc elements, such as lists, tables, or examples. Consider including graphics or diagrams to speed up the understanding of the concept.</simpara>
+<simpara>Do not include any instructions to perform an action, such as executing a command. Action items belong in procedure modules. See also <link xlink:href="http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html">The Six Information Types</link> at <emphasis>informationmapping.com</emphasis> for ways to present different types of conceptual information: principle, concept, structure, process, fact.</simpara>
+<formalpara>
+<title>Writing Additional Resources</title>
+<para>The additional resources list links to other material closely related to the contents of the concept module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</para>
+</formalpara>
+</section>
+<section xml:id="_additional_resources_2">
+<title>Additional Resources</title>
+<itemizedlist>
+<listitem>
+<simpara>Download the <link xlink:href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_CONCEPT_concept-explanation.adoc">concept module template (adoc file)</link> for new projects.</simpara>
+</listitem>
+<listitem>
+<simpara>For real-world examples of concept modules, see <xref linkend="modular-docs-concept-examples"/>.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="creating-procedure-modules">
+<title>Creating Procedure Modules</title>
+<simpara>This section explains what a procedure module is and provides recommended practices for writing procedure modules.</simpara>
+<section xml:id="procedure-module-definition">
+<title>Procedure Module Definition</title>
+<simpara>A procedure module is a "do" module. It gives the user numbered, step-by-step instructions.</simpara>
+<important>
+<simpara>A procedure module does not consist solely of a procedure. At the very least, the steps must be preceded by an introduction statement that provides context for the procedure. For details, see <xref linkend="writing-the-introduction"/>.</simpara>
+</important>
+</section>
+<section xml:id="procedure-module-guidelines">
+<title>Procedure Module Guidelines</title>
+<simpara>The required parts of a procedure module are a procedure and its introduction. Optionally, the module can also include prerequisites and additional resources.</simpara>
+<figure>
+<title>Schema of a procedure module</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/procedure-diagram.png"/>
+</imageobject>
+<textobject><phrase>procedure diagram</phrase></textobject>
+</mediaobject>
+</figure>
+<formalpara xml:id="writing-the-introduction">
+<title>Writing the Introduction</title>
+<para>The introduction is a short description of the procedure. For example, it can be a lead-in sentence or an infinitive phrase (<emphasis>To extract the certificate: &lt;steps&gt;</emphasis>). See also <emphasis>The IBM Style Guide</emphasis> <footnote xml:id="ibm-style-guide"><simpara>DERESPINIS, Francis, Peter HAYWARD, Jana JENKINS, Amy LAIRD, Leslie McDONALD, Eric RADZINKSI. <emphasis>The IBM style guide: conventions for writers and editors</emphasis>. Upper Saddle River, NJ: IBM Press/Pearson, c2012. ISBN 0132101300.</simpara></footnote> for details on introducing procedures.</para>
+</formalpara>
+<simpara>The introduction typically provides context for the procedure, such as:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Who is the user performing the procedure</simpara>
+</listitem>
+<listitem>
+<simpara>Why and where the user performs the procedure</simpara>
+</listitem>
+<listitem>
+<simpara>Special considerations specific to the procedure</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Keep the information brief and focused on what the user needs for this specific procedure. Suggested length is 1&#8212;&#8203;3 sentences, but it can be longer.</simpara>
+<formalpara xml:id="writing-prerequisites">
+<title>Writing Prerequisites</title>
+<para>Prerequisites are conditions that must be satisfied before the user starts the procedure. If a prerequisite is a procedure or an assembly, include a link to them. See also <emphasis>The IBM Style Guide</emphasis> <footnoteref linkend="ibm-style-guide"/> for details on writing prerequisites.</para>
+</formalpara>
+<simpara>Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.</simpara>
+<formalpara xml:id="writing-the-procedure">
+<title>Writing the Procedure</title>
+<para>The procedure consists of one or more steps required to complete the procedure. Each step describes one action.</para>
+</formalpara>
+<simpara>For single-step procedures, use an unnumbered bullet instead of a numbered list.</simpara>
+<formalpara>
+<title>Writing Additional Resources</title>
+<para>Additional resources list links to other material closely related to the contents of the procedure module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</para>
+</formalpara>
+<simpara>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.</simpara>
+</section>
+<section xml:id="_additional_resources_3">
+<title>Additional Resources</title>
+<itemizedlist>
+<listitem>
+<simpara>Download the <link xlink:href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_PROCEDURE_doing-one-procedure.adoc">procedure module template (adoc file)</link> for new projects.</simpara>
+</listitem>
+<listitem>
+<simpara>For real-world examples of procedure modules, see <xref linkend="modular-docs-procedure-examples"/>.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="creating-reference-modules">
+<title>Creating Reference Modules</title>
+<simpara>This section explains what a reference module is and provides recommended practices for writing reference modules.</simpara>
+<section xml:id="reference-module-definition">
+<title>Reference Module Definition</title>
+<simpara>Reference modules provide data that users might want to look up, but do not need to remember.</simpara>
+<example>
+<title>Common documentation examples of reference modules</title>
+<itemizedlist>
+<listitem>
+<simpara>A list of commands that users can use with an application</simpara>
+</listitem>
+<listitem>
+<simpara>A table of configuration files with definitions and usage examples</simpara>
+</listitem>
+<listitem>
+<simpara>A list of default settings for a product</simpara>
+</listitem>
+</itemizedlist>
+</example>
+<example>
+<title>Reference modules explained using a real-life example</title>
+<simpara>For documentation on how to cross the road, you could create these modules:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Concept modules:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>What are roads</simpara>
+</listitem>
+<listitem>
+<simpara>What are crossings</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>Procedure modules:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>How to put one foot in front of another</simpara>
+</listitem>
+<listitem>
+<simpara>How to use pedestrian traffic lights</simpara>
+</listitem>
+<listitem>
+<simpara>How to see if the road is clear for crossing</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>Reference modules:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Crossing signals</simpara>
+</listitem>
+<listitem>
+<simpara>Common crosswalk pavement markings</simpara>
+</listitem>
+<listitem>
+<simpara>Crossing laws by country</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</example>
+</section>
+<section xml:id="reference-module-guidelines">
+<title>Reference Module Guidelines</title>
+<simpara>The required part of a reference module is the reference data. Optionally, the module can also include an introduction.</simpara>
+<bridgehead xml:id="_writing_the_introduction" renderas="sect6">Writing the Introduction</bridgehead>
+<simpara>The introduction to a reference module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the reference is useful without having to read the entire module.</simpara>
+<bridgehead xml:id="_writing_the_reference" renderas="sect6">Writing the Reference</bridgehead>
+<simpara>A reference module has a very strict structure, often in the form of a list or a table. A well-organized reference module enables users to scan it quickly to find the details they want.</simpara>
+<simpara>To make the reference data easier to scan, organize it in a logical order (such as alphabetically) or as a table. AsciiDoc markup to consider for reference data:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xlink:href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#lists">Lists</link> (unordered, labeled)</simpara>
+</listitem>
+<listitem>
+<simpara><link xlink:href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#tables">Tables</link></simpara>
+</listitem>
+</itemizedlist>
+<simpara>If you have a large volume of the same type of information to document, use a structure into which the information details can fit, and then document each logical unit of information as one reference module. For example, think of man pages, which document very different information details, but which still use consistent titles and formats to present those details in a uniform information structure.</simpara>
+</section>
+<section xml:id="_additional_resources_4">
+<title>Additional Resources</title>
+<itemizedlist>
+<listitem>
+<simpara>Download the <link xlink:href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_REFERENCE_reference-material.adoc">reference module template (adoc file)</link> for new projects.</simpara>
+</listitem>
+<listitem>
+<simpara>For real-world examples of reference modules, see <xref linkend="modular-docs-reference-examples"/>.</simpara>
+</listitem>
+<listitem>
+<simpara>For advice on when to use lists and when to use tables, see <link xlink:href="https://medium.com/@heyoka/lets-bring-table-to-the-table-again-f1ae751159d5">Let’s bring &lt;table&gt; to the table, again.</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="anchor-and-file-names">
+<title>Anchor Names and File Names</title>
+<simpara>To optimize modular documentation, follow these guidelines for naming module anchors and files:</simpara>
+<variablelist>
+<varlistentry>
+<term>Anchor names</term>
+<listitem>
+<simpara>Provide an anchor in the format <literal>[id='anchor-name']</literal> for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:</simpara>
+<screen>[id='anchor-name']
+= Module Heading
+
+First sentence of topic.</screen>
+<formalpara>
+<title>Example 1. Concept Module</title>
+<para>
+<screen>[id='guided-decision-tables']
+= Guided Decision Tables
+
+The guided decision tables feature works similarly to ...</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>Example 2. Procedure Module</title>
+<para>
+<screen>[id='creating-guided-decision-tables']
+= Creating Guided Decision Tables
+
+You can use guided decision tables to ...</screen>
+</para>
+</formalpara>
+<note>
+<title>Note on Other Anchor Formats (Not Recommended)</title>
+<simpara>The format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced properly. For details, see <xref linkend="reusing-modules"/>. Other anchor formats include <literal>[[anchor-name]]</literal> and <literal>[#anchor-name]</literal>, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.</simpara>
+</note>
+<simpara>For more information about Asciidoc anchors, see the <link xlink:href="http://asciidoctor.org/docs/user-manual/#anchordef">Asciidoctor User Manual</link>.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>File names</term>
+<listitem>
+<simpara>Give the module file the same name as the anchor used in it (which is the same as or similar to the module heading), also separated by dashes. Add a prefix with an underscore to the file name to indicate the module type in the format <literal>prefix_file-name</literal>. Use <literal>con_</literal> for concept, <literal>ref_</literal> for reference, <literal>proc_</literal> for procedure, and <literal>assembly_</literal> for assembly.</simpara>
+<itemizedlist>
+<title>Examples</title>
+<listitem>
+<simpara><literal>con_guided-decision-tables.adoc</literal>  (Concept module)</simpara>
+</listitem>
+<listitem>
+<simpara><literal>proc_creating-guided-decision-tables.adoc</literal>  (Procedure module for creating)</simpara>
+</listitem>
+<listitem>
+<simpara><literal>proc_editing-guided-decision-tables.adoc</literal>  (Procedure module for editing)</simpara>
+</listitem>
+<listitem>
+<simpara><literal>ref_guided-decision-table-examples.adoc</literal>  (Reference module with examples)</simpara>
+</listitem>
+<listitem>
+<simpara><literal>ref_guided-decision-table-columns.adoc</literal>  (Reference module with column types)</simpara>
+</listitem>
+<listitem>
+<simpara><literal>assembly_guided-decision-tables.adoc</literal>  (Assembly of guided decision table modules)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<section xml:id="_additional_resources_5">
+<title>Additional Resources</title>
+<itemizedlist>
+<listitem>
+<simpara>The <link xlink:href="http://asciidoctor.org/docs/user-manual/#anchordef">Asciidoctor User Manual</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</section>
+<section xml:id="forming-assemblies">
+<title>Forming Assemblies</title>
+<simpara>This section explains what an assembly is and provides recommended practices for forming assemblies.</simpara>
+<section xml:id="assembly-definition">
+<title>Assembly Definition</title>
+<simpara>An assembly is a collection of modules that describes how to accomplish a user story. See also <xref linkend="understanding-mod-docs"/>.</simpara>
+</section>
+<section xml:id="assembly-guidelines">
+<title>Assembly Guidelines</title>
+<simpara>The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.</simpara>
+<formalpara>
+<title>Writing the Introduction</title>
+<para>The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.</para>
+</formalpara>
+<simpara>Consider rewording the user story to write the assembly introduction, for example:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>User story: As an administrator, I want to provide external identity, authentication and authorization services for my Atomic Host, so that users from external identity sources can access the Atomic Host.</simpara>
+</listitem>
+<listitem>
+<simpara>Assembly introduction: As a system administrator, you can use SSSD in a container to provide external identity, authentication, and authorization services for the Atomic Host system. This enables users from external identity sources to authenticate to the Atomic Host.</simpara>
+</listitem>
+</itemizedlist>
+<formalpara>
+<title>Writing Prerequisites</title>
+<para>Prerequisites are conditions that must be satisfied before the user can start following the assembly. For details, see <link linkend="writing-prerequisites">Writing Prerequisites</link>.</para>
+</formalpara>
+<formalpara>
+<title>Adding Modules</title>
+<para>List <link xlink:href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files">include files</link> to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.</para>
+</formalpara>
+<formalpara>
+<title>Adding Additional Resources</title>
+<para>Additional resources list links to other material closely related to the contents of the assembly: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</para>
+</formalpara>
+<simpara>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.</simpara>
+</section>
+<section xml:id="_additional_resources_6">
+<title>Additional Resources</title>
+<itemizedlist>
+<listitem>
+<simpara>Download the <link xlink:href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_ASSEMBLY_a_collection_of_modules.adoc">assembly template (adoc file)</link> for new projects.</simpara>
+</listitem>
+<listitem>
+<simpara>For real-world examples of assemblies, see <xref linkend="modular-docs-assembly-examples"/>.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="reusing-modules">
+<title>Reusing Modules in Assemblies</title>
+<simpara>When you create content in modules, you can use the same module multiple times in an assembly without having to replicate information in multiple source files. However, in order to facilitate module reuse, you must embed a document attribute variable in the anchor name for the module and then define that variable in the assembly each time the reused module appears. If the variable is not embedded and assigned, an error appears at build time reporting the duplicated anchor ID.</simpara>
+<example>
+<title>Error at Build Time When Anchor Has No Variable</title>
+<screen>ID "$ANCHOR_NAME" is duplicated in the source content
+$BUILD_PATH fails to validate</screen>
+</example>
+<simpara>This error is resolved by adding and defining a document variable.</simpara>
+<bridgehead xml:id="_procedure" renderas="sect5">Procedure</bridgehead>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>In the module file that will be reused, add the <literal>{context}</literal> suffix with an underscore to the anchor name in the format <literal>[id='anchor-name_{context}']</literal>.</simpara>
+<note>
+<simpara>Although you can use any document variable that clearly indicates the variable in question, such as <literal>{product}</literal> or <literal>{chapter}</literal>, the <literal>{context}</literal> variable is recommended. This variable indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.</simpara>
+</note>
+<formalpara>
+<title>Two Modules to Be Reused: Module A and Module B</title>
+<para>
+<screen>[id='module-A-being-reused_{context}']
+= Module A Heading</screen>
+</para>
+</formalpara>
+<screen>[id='module-B-being-reused_{context}']
+= Module B Heading</screen>
+</listitem>
+<listitem>
+<simpara>In the assembly file or the master book file, define the <literal>:context:</literal> variable, separated by dashes, immediately above any included modules that are being reused, in the format <literal>:context: variable-name</literal>. How you define the variable depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.</simpara>
+<variablelist>
+<varlistentry>
+<term>Module Included Once in Multiple Assemblies</term>
+<listitem>
+<simpara>If the reused modules are included only once in this assembly and in at least one other assembly, define an assembly-level variable such as <literal>:context: assembly-name</literal>. This  indicates that the reused module is appearing in the context of that assembly.</simpara>
+<formalpara>
+<title>Assembly 1</title>
+<para>
+<screen>include::con_some-module-not-being-reused.adoc
+
+:context: assembly-1-name
+include::con_module-A-being-reused.adoc
+
+include::con_some-module-not-being-reused.adoc
+
+:context: assembly-1-name
+include::con_module-B-being-reused.adoc</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>Assembly 2</title>
+<para>
+<screen>include::con_some-module-not-being-reused.adoc
+
+:context: assembly-2-name
+include::con_module-A-being-reused.adoc
+
+include::con_some-module-not-being-reused.adoc
+
+:context: assembly-2-name
+include::con_module-B-being-reused.adoc</screen>
+</para>
+</formalpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Module Included Multiple Times in a Single Assembly</term>
+<listitem>
+<simpara>If a module is included multiple times in the same assembly, define a variable specific to a section or a chapter of that assembly, such as <literal>:context: section-name</literal>. This  indicates that the reused module is appearing in the context of that section of the assembly.</simpara>
+<formalpara>
+<title>Assembly</title>
+<para>
+<screen>include::con_some-module-not-being-reused.adoc
+
+:context: section-1-name
+include::con_module-A-being-reused.adoc
+
+include::con_some-module-not-being-reused.adoc
+
+:context: section-2-name
+include::con_module-A-being-reused.adoc</screen>
+</para>
+</formalpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+<listitem>
+<simpara>Return to the reused module file, and at the top of the file add a comment that identifies which assemblies the module has been added to. This helps to track reused modules in the future.</simpara>
+<screen>// Module included in the following assemblies:
+//
+// ...
+
+[id='module-A-being-reused_{context}']
+= Module A Heading</screen>
+</listitem>
+</orderedlist>
+<note>
+<title>Cross-Referencing Reused Modules</title>
+<simpara>To cross-reference a reused module, specify both the anchor name and the <literal>{context}</literal> variable as defined in the assembly:</simpara>
+<screen>xref:anchor-name_context-variable-name[]</screen>
+<simpara>Example:</simpara>
+<screen>For details, see xref:module-A-being-reused_assembly-1-name[].</screen>
+</note>
+<bridgehead xml:id="_practical_example_1_reusing_modules_in_multiple_assemblies" renderas="sect5">Practical Example 1: Reusing Modules in Multiple Assemblies</bridgehead>
+<simpara>You want to reuse the "Creating Assets" procedure module and the "Projects" concept module in two assemblies: an "Asset Definitions" assembly and a "Business Rules" assembly.</simpara>
+<simpara>The module files contain the following content:</simpara>
+<formalpara>
+<title>con_projects.adoc</title>
+<para>
+<screen>// Module included in the following assemblies:
+//
+// assembly_asset-definitions.adoc
+// assembly_business-rules.adoc
+
+[id='projects_{context}']
+= Projects</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>proc_creating-assets.adoc</title>
+<para>
+<screen>// Module included in the following assemblies:
+//
+// assembly_asset-definitions.adoc
+// assembly_business-rules.adoc
+
+[id='creating-assets_{context}']
+= Creating Assets</screen>
+</para>
+</formalpara>
+<simpara>The assembly files contain the following content:</simpara>
+<formalpara>
+<title>assembly_asset-definitions.adoc</title>
+<para>
+<screen>include::con_organizational-unit.adoc
+
+include::con_repository.adoc
+
+:context: asset-definitions
+include::con_projects.adoc
+
+include::con_organizational-unit.adoc
+
+include::proc_creating-packages.adoc
+
+:context: asset-definitions
+include::proc_creating-assets.adoc
+
+include::proc_adding-dependencies.adoc</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>assembly_business-rules.adoc</title>
+<para>
+<screen>include::con_business-processes.adoc
+
+:context: business-rules
+include::con_projects.adoc
+
+include::ref_project-types.adoc
+
+include::con_packages.adoc
+
+:context: business-rules
+include::proc_creating-assets.adoc</screen>
+</para>
+</formalpara>
+<simpara>For all cross-references to the reused modules, specify which context (assembly) you want to link to. For example, you can link to the "Creating Assets" procedure module as it appears either in the "Asset Definitions" assembly or in the "Business Rules" assembly. Create cross-references in the <literal>xref:anchor-name_context-variable-name[]</literal> format:</simpara>
+<screen>For details, see xref:creating-assets_asset-definitions[].</screen>
+<simpara>or</simpara>
+<screen>For details, see xref:creating-assets_business-rules[].</screen>
+<bridgehead xml:id="_practical_example_2_reusing_a_module_in_a_single_assembly" renderas="sect5">Practical Example 2: Reusing a Module in a Single Assembly</bridgehead>
+<simpara>You want to reuse the "Projects" concept module twice in the "Business Rules" assembly.</simpara>
+<simpara>The module file contains the following content:</simpara>
+<formalpara>
+<title>con_projects.adoc</title>
+<para>
+<screen>[id='projects_{context}']
+= Projects</screen>
+</para>
+</formalpara>
+<simpara>The assembly file contains the following content:</simpara>
+<formalpara>
+<title>assembly_business-rules.adoc</title>
+<para>
+<screen>:context: intro
+include::con_projects.adoc
+
+include::con_organizational-unit.adoc
+
+include::ref_asset-types.adoc
+
+:context: asset-types
+include::con_projects.adoc
+
+include::con_dependencies.adoc</screen>
+</para>
+</formalpara>
+<simpara>For all cross-references to the reused module, specify which context (section) you want to link to. For example, you can link to the "Projects" module as it appears either in the "Introduction" or in the "Asset Types" section. You create cross-references in the format <literal>xref:anchor-name_context-variable-name[]</literal>:</simpara>
+<screen>For details, see xref:projects_introduction[].</screen>
+<simpara>or</simpara>
+<screen>For details, see xref:projects_asset-types[].</screen>
+<bridgehead xml:id="_additional_resources_7" renderas="sect5">Additional Resources</bridgehead>
+<itemizedlist>
+<listitem>
+<simpara>The <link xlink:href="http://asciidoctor.org/docs/user-manual/#include-multiple">Asciidoctor User Manual</link>.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</section>
+<appendix xml:id="modular-docs-terms-definitions">
+<title>Modular Documentation Terms and Definitions</title>
+<variablelist>
+<varlistentry>
+<term>Assembly</term>
+<listitem>
+<simpara>A collection of several modules combined into a larger piece of text, preceded by an introduction that explains the purpose of the assembly.</simpara>
+<simpara>The docs realization of a <emphasis>user story</emphasis>.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Module</term>
+<listitem>
+<simpara>A building block of information with a well-organized structure.</simpara>
+<simpara>Because modules are written as context-free elements independent of other modules, they are re-usable: one module can be part of multiple assemblies.</simpara>
+<variablelist>
+<varlistentry>
+<term>Concept Module</term>
+<listitem>
+<simpara>Explains a concept; i.e. not action-based.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Procedure Module</term>
+<listitem>
+<simpara>Describes steps to perform an action.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Reference Module</term>
+<listitem>
+<simpara>Presents detailed reference material, for example, command syntax.</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>User Story</term>
+<listitem>
+<simpara>A short description of something the user does to achieve a goal.</simpara>
+<simpara>Example: As an administrator, I want to set up authentication to a critical system in my infrastructure (gateway VPN, accounting system) to only allow users authenticated via strong authentication methods (two-factor authentication).</simpara>
+<simpara>As opposed to a <emphasis>use case</emphasis>, which is a description of interactions between the system and the user or other systems.</simpara>
+<simpara>For details, see <link xlink:href="https://mojo.redhat.com/groups/ccs/blog/2016/11/24/user-stories-and-use-cases-whats-the-difference">User Stories and Use Cases: What&#8217;s the Difference?</link> in Mojo.</simpara>
+<important>
+<simpara>To fulfill their purpose, user stories must be defined based on customer needs. Therefore, they must be produced by customer-facing associates (such as product management or field teams), not by writers. Writers can only help polish the user stories if required.</simpara>
+<simpara>If your team does not have user stories, do not write them yourselves. Instead, ask the stakeholders for your product to provide them to you.</simpara>
+</important>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>User story-based docs</term>
+<listitem>
+<simpara>Docs developed to support a user story. For our purposes, user-story-based docs are the same as use-case-based docs.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Modular docs</term>
+<listitem>
+<simpara>Docs structured into modules and assemblies.</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<note>
+<simpara>We do not use the terms <emphasis>topic</emphasis> or <emphasis>topic-based documentation</emphasis> because they are too ambiguous. A <emphasis>topic</emphasis> can mean a piece of documentation, a user story, or a short chunk of content. Therefore, topic-based can mean a number of things.</simpara>
+</note>
+</appendix>
+<appendix xml:id="appendix-examples">
+<title>Module and Assembly Examples</title>
+<section xml:id="modular-docs-concept-examples">
+<title>Concept Module Examples</title>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/overview-of-the-containerized-ipa-services#overview-containers-available-container-images">Available Container Images</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/colocation-of-containerized-ceph-daemons#how-colocation-works-and-its-advantages">How Colocation Works and Its Advantages</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_interconnect/#syntax_for_using_literal_qdstat_literal">Syntax for Using qdstat</link></simpara>
+</section>
+<section xml:id="modular-docs-procedure-examples">
+<title>Procedure Module Examples</title>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host#sssd-services-on-host-enrolling-to-an-ipa-domain-using-an-sssd-container">Enrolling to an Identity Management Domain Using an SSSD Container</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/uninstalling-sssd-containers#uninstalling-sssd-containers-uninstalling-an-sssd-container-enrolled-in-an-ipa-domain">Uninstalling an SSSD Container Enrolled in an Identity Management Domain</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/administering-ceph-clusters-that-run-in-containers#purging-clusters-deployed-by-ansible">Purging Clusters Deployed by Ansible</link></simpara>
+</section>
+<section xml:id="modular-docs-reference-examples">
+<title>Reference Module Examples</title>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_interconnect/#managing_network_connections">Managing Listeners</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/changes-in-ansible-variables-between-version-2-and-3">Changes in Ansible Variables Between Version 2 and 3</link></simpara>
+</section>
+<section xml:id="modular-docs-assembly-examples">
+<title>Assembly Examples</title>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host">Configuring the SSSD Container to Provide Identity and Authentication Services on Atomic Host</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/ceph_file_system_guide/deploying-ceph-file-systems">Deploying Ceph File Systems</link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_mobile_application_platform/4.2/html/mbaas_administration_and_installation_guide/backing-up-an-mbaas">Backing up an MBaaS</link></simpara>
+</section>
+</appendix>
+<appendix xml:id="converting-to-mod-doc">
+<title>Converting to Modular Documentation</title>
+<simpara>If you have a monolithic, feature-based manual, you can convert it to a set of modular content based on user stories. This conversion workflow involves using the customer product lifecycle to define user stories for your product, and creating the assemblies and modules necessary to fit each user story.</simpara>
+<simpara>The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need).</simpara>
+<section xml:id="_prerequisites">
+<title>Prerequisites</title>
+<itemizedlist>
+<listitem>
+<simpara>You should understand what modular documentation is:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link linkend="what-modular-documentation-is">What Modular Documentation Is</link></simpara>
+</listitem>
+<listitem>
+<simpara><link linkend="what-modular-documentation-is-not">What Modular Documentation Is Not</link></simpara>
+</listitem>
+<listitem>
+<simpara><link linkend="modular-docs-terms-definitions">Modular Documentation Terminology</link></simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>You should understand the benefits of modular documentation.</simpara>
+<simpara>For example, see <link xlink:href="https://opensource.com/article/17/6/documentation-based-user-stories"><emphasis>Documentation based on user stories</emphasis></link>.</simpara>
+</listitem>
+<listitem>
+<simpara>Find a user story and practice documenting it as an <link linkend="assembly-guidelines">assembly</link>.</simpara>
+<simpara>This process of breaking down user stories into assemblies and modules is an essential element of modular documentation. You should be familiar with this process before attempting to do it for an entire feature-based book.</simpara>
+</listitem>
+<listitem>
+<simpara>Your repository should be set up.</simpara>
+<simpara>If you are using AsciiDoc, your repository should have a directory structure that supports modular documentation, and you should have a <literal>master.adoc</literal> file for each publication.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="customer-product-lifecycle">
+<title>Overview of the Customer Product Lifecycle</title>
+<simpara>User stories are the basis of modular documentation. The modular documentation conversion workflow uses the <emphasis>customer product lifecycle</emphasis> to help you discover and develop the user stories that your documentation should include.</simpara>
+<simpara>While all products are different, everyone tends to use them in a similar workflow that starts with the initial research to determine which product to use, includes implementing and managing the product, and ends when the product is no longer needed. This customer product lifecycle can be broken down into phases, each of which presents unique user information requirements (that is, the user needs different types of information at each phase of the lifecycle):</simpara>
+<variablelist>
+<varlistentry>
+<term>Plan</term>
+<listitem>
+<simpara>What information should be gathered and what decisions should be made (for example, design/deployment) before the customer can start installing the product?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Install</term>
+<listitem>
+<simpara>How does the customer install the product on each of the supported platforms?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Configure and Verify</term>
+<listitem>
+<simpara>After the product is installed, what does the customer need to do to configure it to work in their environment? How do they test or verify that it is ready to put into production?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Develop and Test</term>
+<listitem>
+<simpara>Does the customer need to develop any custom applications to connect the product to any of their existing infrastructure?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Manage</term>
+<listitem>
+<simpara>Once the product is in production, how does the customer customize and change it on a day-to-day basis?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Monitor and Tune</term>
+<listitem>
+<simpara>Once the product is in production, how does the customer monitor its performance in order to know when changes are needed?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Upgrade and Migrate</term>
+<listitem>
+<simpara>How does the customer upgrade to newer versions of the product?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Troubleshoot</term>
+<listitem>
+<simpara>How does the customer fix common problems they may encounter?</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section xml:id="defining-user-stories">
+<title>Defining User Stories for Your Product</title>
+<simpara>User stories provide the context and structure from which you can determine which assemblies and modules to create.</simpara>
+<simpara>For more information about user stories, see <link linkend="modular-docs-terms-definitions">Modular Documentation Terms and Definitions</link>.</simpara>
+<simpara>Ideally, well-defined user stories would already exist for the product you are documenting. For most writers, however, this ideal is not a reality. If you do not have any user stories from which to work, and you&#8201;&#8212;&#8201;as a writer&#8201;&#8212;&#8201;do not have all of the user information you would need to create the user stories yourself, how do you get started? This procedure provides a general approach that you can take.</simpara>
+<simpara>Of course, every product differs in terms of tools, processes, team dynamics, and access to SMEs. Since you are most familiar with these aspects for your own team, you will need to adapt this general approach for your own team. Depending on your team structure, each step can be completed by either a writer or a collaboration between a writer and Content Strategist.</simpara>
+<bridgehead xml:id="_procedure_2" renderas="sect4">Procedure</bridgehead>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Identify the key, top-level user stories for your product.</simpara>
+<simpara>This step should typically be performed by the Content Strategist.</simpara>
+<simpara>Start with the customer product lifecycle phases. If you have existing user stories, ask yourself which ones correspond to phases in the lifecycle. If you do not have existing user stories, create a user story for each lifecycle phase that applies to your product.</simpara>
+<simpara>For more information, see <link linkend="customer-product-lifecycle">Overview of the Customer Product Lifecycle</link>.</simpara>
+<simpara>For example, here is a top-level user story for the <emphasis>Configure and Verify</emphasis> phase of the customer product lifecycle:</simpara>
+<example>
+<title>Creating Top-Level User Stories</title>
+<itemizedlist>
+<listitem>
+<simpara>[Phase] Configure and Verify&#8201;&#8212;&#8201;[Top-level user story] As a system administrator, I want to configure <emphasis>PRODUCT</emphasis> so that it is ready for production.</simpara>
+</listitem>
+</itemizedlist>
+</example>
+</listitem>
+<listitem>
+<simpara>Define the supporting user stories that are necessary to complete each of the top-level user stories.</simpara>
+<simpara>This step should typically be a collaborative effort between the Content Strategist and the writer.</simpara>
+<simpara>Each top-level user story represents a "phase" of the customer lifecycle. You should go through each phase and define the user stories needed to complete the phase. You will need to use your own knowledge and expertise of the product.</simpara>
+<simpara>For example, for the <emphasis>Configure and Verify</emphasis> phase, users would need to know how to configure and set up each component or feature of the product to work in their environment. You could break it down like this:</simpara>
+<example>
+<title>Creating Second-Level User Stories</title>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to configure <emphasis>PRODUCT</emphasis> so that it is ready for production.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to enable <emphasis>PRODUCT</emphasis> to make and accept connections so that remote peers can exchange data with <emphasis>PRODUCT</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara>As a system administrator, I want to secure <emphasis>PRODUCT</emphasis> so that it can communicate with remote peers securely.</simpara>
+</listitem>
+<listitem>
+<simpara>As a system administrator, I want to set up logging so that error conditions can be diagnosed.</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</example>
+<simpara>At this point, you should have a two-deep list of user stories.</simpara>
+</listitem>
+<listitem>
+<simpara>Go back through the list and add any additional user stories that might be needed to complete any of the secondary user stories.</simpara>
+<simpara>Depending on the product, one or two levels of user stories might be sufficient. For larger, more complex products, you might find yourself going multiple levels deep.</simpara>
+<simpara>Be careful not to go too deep, however. At this stage, you are not defining every procedure or step needed to complete each user story. User stories represent user goals, so you should only need to go deeper if a secondary user story has multiple goals.</simpara>
+<simpara>For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories&#8201;&#8212;&#8201;the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it:</simpara>
+<example>
+<title>Creating Additional User Stories</title>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to configure <emphasis>PRODUCT</emphasis> so that it is ready for production.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to enable <emphasis>PRODUCT</emphasis> to make and accept connections so that remote peers can exchange data with <emphasis>PRODUCT</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara>As a system administrator, I want to secure <emphasis>PRODUCT</emphasis> so that it can communicate with remote peers securely.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to add security certificates so that clients can be authenticated.</simpara>
+</listitem>
+<listitem>
+<simpara>As a system administrator, I want to use my existing LDAP configuration so that clients can be authenticated.</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>As a system administrator, I want to set up logging so that error conditions can be diagnosed.</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</example>
+</listitem>
+<listitem>
+<simpara>For each user story in your list, define the following:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>What concepts does the user need to understand to complete the user story?</simpara>
+<simpara>These will become the concept modules for the assembly.</simpara>
+</listitem>
+<listitem>
+<simpara>What are the procedures to complete the user story?</simpara>
+<simpara>These will become the procedure modules for the assembly.</simpara>
+</listitem>
+<listitem>
+<simpara>Is there any reference information that the user might want to refer to when performing this user story?</simpara>
+<simpara>These will become reference modules.</simpara>
+</listitem>
+</itemizedlist>
+<example>
+<title>Breaking Down User Stories</title>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to configure <emphasis>PRODUCT</emphasis> so that it is ready for production.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>As a system administrator, I want to enable <emphasis>PRODUCT</emphasis> to make and accept connections so that remote peers can exchange data with <emphasis>PRODUCT</emphasis>.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Concept: Types of connections</simpara>
+</listitem>
+<listitem>
+<simpara>Procedure: Create "listeners" to accept incoming connections</simpara>
+</listitem>
+<listitem>
+<simpara>Procedure: Create "connectors" to connect to outbound endpoints</simpara>
+</listitem>
+<listitem>
+<simpara>Reference: Network connection configuration attributes</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara><emphasis>Additional user stories&#8230;&#8203;</emphasis></simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</example>
+</listitem>
+</orderedlist>
+</section>
+<section xml:id="creating-assemblies">
+<title>Creating Assemblies</title>
+<simpara>An assembly is a representation of a user story, so you need to create an assembly for each user story that you defined.</simpara>
+<simpara>An assembly could represent an article, "chapter" in a book, or even an entire book. However, one of the benefits of modular documentation is that you do not need to worry about how the assembly will ultimately be used&#8201;&#8212;&#8201;each assembly represents a user goal, and once you create it, it can be "included" anywhere it is needed (a publication, within another assembly, and so on).</simpara>
+<bridgehead xml:id="_procedure_3" renderas="sect4">Procedure</bridgehead>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Create an assembly file for each user story that you identified.</simpara>
+<simpara>Be sure to follow the conventions for <link linkend="anchor-and-file-names">naming anchors and files</link>. For example: <literal>assembly_guided-decision-tables.adoc</literal></simpara>
+</listitem>
+<listitem>
+<simpara>For each top-level assembly file that you created, fill in the content.</simpara>
+<simpara>For more information, see <link linkend="assembly-guidelines">Assembly Guidelines</link>.</simpara>
+</listitem>
+<listitem>
+<simpara>Repeat the previous step for each second-level assembly.</simpara>
+</listitem>
+</orderedlist>
+</section>
+<section xml:id="creating-modules">
+<title>Creating Modules</title>
+<simpara>After identifying and creating the assemblies, each assembly should identify the modules that you need to create.</simpara>
+<bridgehead xml:id="_procedure_4" renderas="sect4">Procedure</bridgehead>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>For each assembly that you created, create a module file for each module that is identified in the assembly.</simpara>
+<simpara>Each assembly should already have the names of the modules that should be included in the assembly. Now you just need to create the actual files for those modules.</simpara>
+</listitem>
+</orderedlist>
+<simpara>Be sure to follow the conventions for <link linkend="anchor-and-file-names">naming anchors and files</link>. For example: <literal>con_guided-decision-tables.adoc</literal></simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>For each module file that you created, add content.</simpara>
+<simpara>Use your existing, feature-based manual to get the content. Make sure to rewrite and rework it to fit the modular documentation module templates. For more information, see:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link linkend="concept-module-guidelines">Concept Module Guidelines</link></simpara>
+</listitem>
+<listitem>
+<simpara><link linkend="procedure-module-guidelines">Procedure Module Guidelines</link></simpara>
+</listitem>
+<listitem>
+<simpara><link linkend="reference-module-guidelines">Reference Module Guidelines</link></simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</orderedlist>
+</section>
+<section xml:id="auditing">
+<title>Auditing Your Feature-Based Manual</title>
+<simpara>In the process of adding content to the modules from your existing feature-based manual, it is likely that there is some existing content that did not fit into any of the user stories that you identified and thus was not pulled out. It is important to identify this content to ensure that it is no longer needed.</simpara>
+<bridgehead xml:id="_procedure_5" renderas="sect4">Procedure</bridgehead>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Go through your existing feature-based manual and identify any content that you did not add to an assembly or module.</simpara>
+</listitem>
+<listitem>
+<simpara>For each piece of content that you find, determine whether it is necessary.</simpara>
+<simpara>If the content does not fit into a user story or assembly, then it stands to reason that it may not be necessary to complete any particular user goal. If this is the case, you should be able to discard it.</simpara>
+<example>
+<title>Handling Extraneous Content</title>
+<simpara>For example, many feature-based manuals contain detailed sections about how a particular feature works. This type of content, which valuable in certain contexts, is not always necessary for user documentation&#8201;&#8212;&#8201;user goals generally involve <emphasis>doing</emphasis> something, not understanding how all the details work. When you encounter this type of content, ask yourself whether a user would need to understand it in order to accomplish any of their goals (planning, installing, configuring, managing, and so on). If the answer is no, then you can probably discard it.</simpara>
+</example>
+<simpara>On the other hand, it is also possible that the content is related to a user story that you have not considered. In that case, you should create the necessary assemblies and modules and add them to your modular doc.</simpara>
+</listitem>
+</orderedlist>
+</section>
+</appendix>
+<chapter xml:id="_concept_module">
+<title>Concept module</title>
+<simpara>For baking cake successfully, you need to understand the importance of keeping the timing right</simpara>
+</chapter>
+<chapter xml:id="_baking_the_corpus">
+<title>Baking the corpus</title>
+<simpara>start the cooker, get it warm (Preheat your oven for at least 20 minutes. Use an oven thermometer so you&#8217;ll know if your oven is running hot or cold.)</simpara>
+</chapter>
+<chapter xml:id="_procedure_preparing_the_icing">
+<title>PROCEDURE: Preparing the icing</title>
+<simpara>create cholocate top by melting ‘cokolada na vareni’</simpara>
+</chapter>
+<chapter xml:id="_procedure_combine_the_two_cake_parts_and_decorate_the_product">
+<title>PROCEDURE: Combine the two cake parts and decorate the product</title>
+<itemizedlist>
+<listitem>
+<simpara>Take the pan with the cake out of the oven at the right time (respond to the alarm bleeping)</simpara>
+</listitem>
+<listitem>
+<simpara>vyklop the cake from the pan, turning it upside down</simpara>
+</listitem>
+<listitem>
+<simpara>have it acquire room temperature</simpara>
+</listitem>
+<listitem>
+<simpara>Add the chocolate layer on the top of the corpus applying strokes of brush</simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+<chapter xml:id="_related_material_useful_links">
+<title>RELATED MATERIAL: Useful links</title>
+<itemizedlist>
+<listitem>
+<simpara><link xlink:href="https://www.foodnetwork.com/how-to/articles/how-to-bake-a-cake-a-step-by-step-guide">https://www.foodnetwork.com/how-to/articles/how-to-bake-a-cake-a-step-by-step-guide</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xlink:href="http://kitchen.manualsonline.com/manuals/device/oven.html">http://kitchen.manualsonline.com/manuals/device/oven.html</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xlink:href="https://onlinealarmkur.com/en/">https://onlinealarmkur.com/en/</link></simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+</book>
