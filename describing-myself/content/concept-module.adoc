@@ -1,17 +1,28 @@
 = Concept module
 
 Hello I’m AB. I live in Švábenice. It’s a village located 12 km from Vyškov. With
-my family we live in a family house with a bigger garden. Mum’s name is Rob. She is an
+my family we live in a family house with a bigger garden.
+
+Mum’s name is Rob. She is an
 accountant. She is really generous, helpful and nice person. My daddy’s name is Robbie. He
 works as head of mechanization in an agriculture company. My dad is smart, handy, careful
 and really imaginative. I have a younger sister, her name is Vendula. She’s studying at
 secondary school. Verča plays on the piano, sings and dances. She’s actually friendly and
 crazy. She is an animal lover. We have two cats and one dog. I love my family.
+
 And now about me. I’m 17 years old and I'm a student at grammar school in Vyškov. I’m
 studying in third year. Earlier I studied at elementary school in Švábenice and then in
 Ivanovice na Hané. People say about me I’m really sociable, talkative, creative and friendly. I
-think I’m emphatic, reliable and sometimes impatient, irresolute and moody. I'm a
-perfectionist, I must have everything perfect. I like people who are positive, honest and
-funny. I don’t like people who are bossy, nasty and selfish. My favourite quote is ,,Motivation
+think I’m *emphatic*, reliable and sometimes impatient, irresolute and moody.
+
+I'm a
+perfectionist, I must have everything perfect.
+
+I like people who are positive, honest and
+funny. I don’t like people who are bossy, nasty and selfish.
+
+My favourite quote is ,,Motivation
 begins with desire. When you want something, you have a motive to get it.’’ I'm a car lover,
 but the most I like old Ford Mustangs. I believe that I will buy it in future.
+
+include::zoom-bookcase-background-2.jpg
