@@ -442,12 +442,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel2">
-<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#introduction_{context}">1. Introduction to Modular Documentation</a></li>
 <li><a href="#understanding-mod-docs">2. Understanding Modular Documentation</a>
 <ul class="sectlevel3">
 <li><a href="#what-modular-documentation-is">2.1. What Modular Documentation Is</a></li>
 <li><a href="#what-modular-documentation-is-not">2.2. What Modular Documentation Is Not</a></li>
-<li><a href="#a-simple-example-of-a-modular-guide">2.3. A Simple Example of a Modular Guide</a></li>
+<li><a href="#modular-documentation-repositories">2.3. Modular Documentation Repositories</a></li>
 </ul>
 </li>
 <li><a href="#writing-mod-docs">3. Writing Modular Documentation</a>
@@ -467,12 +467,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#converting-to-mod-doc">Appendix C: Converting to Modular Documentation</a>
 <ul class="sectlevel3">
-<li><a href="#_prerequisites">C.1. Prerequisites</a></li>
-<li><a href="#customer-product-lifecycle">C.2. Overview of the Customer Product Lifecycle</a></li>
-<li><a href="#defining-user-stories">C.3. Defining User Stories for Your Product</a></li>
-<li><a href="#creating-assemblies">C.4. Creating Assemblies</a></li>
-<li><a href="#creating-modules">C.5. Creating Modules</a></li>
-<li><a href="#auditing">C.6. Auditing Your Feature-Based Manual</a></li>
+<li><a href="#customer-product-lifecycle">C.1. Overview of the Customer Product Lifecycle</a></li>
+<li><a href="#defining-user-stories">C.2. Defining User Stories for Your Product</a></li>
+<li><a href="#creating-assemblies">C.3. Creating Assemblies</a></li>
+<li><a href="#creating-modules">C.4. Creating Modules</a></li>
+<li><a href="#auditing">C.5. Auditing Your Feature-Based Manual</a></li>
 </ul>
 </li>
 <li><a href="#_concept_module">4. Concept module</a></li>
@@ -492,9 +491,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="introduction"><a class="anchor" href="#introduction"></a><a class="link" href="#introduction">1. Introduction</a></h3>
+<h3 id="introduction_{context}"><a class="anchor" href="#introduction_{context}"></a><a class="link" href="#introduction_{context}">1. Introduction to Modular Documentation</a></h3>
 <div class="paragraph">
 <p>This manual provides instructions on how to author modularly structured documentation based on user stories. The manual defines used terminology, describes components that form modular documentation, and instructs writers on how to use provided templates to turn user stories into modular documentation.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+As modular documentation imperatives continue to evolve, the details and recommendations in this guide might be modified.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -522,7 +533,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </table>
 </div>
 <div class="paragraph">
-<p>At Red Hat, we write modular documentation that is based on <em>user-stories</em>. This means that each assembly documents a user story.</p>
+<p>At Red Hat, we write modular documentation that is based on <em>user stories</em>. This means that each assembly documents a user story.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -530,14 +541,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="title">Figure 1. Schema of a Module and an Assembly</div>
 </div>
-<h5 id="_additional_resources" class="discrete">Additional Resources</h5>
 <div class="ulist">
+<div class="title">Additional Resources</div>
 <ul>
 <li>
 <p>For definitions of the terms we use, including modules, assemblies, and user stories, see <a href="#modular-docs-terms-definitions">Modular Documentation Terms and Definitions</a>.</p>
-</li>
-<li>
-<p>For an explanation of why user-story-based docs are useful, see <a href="https://mojo.redhat.com/groups/ccs/blog/2017/06/27/from-legacy-docs-to-modular-docs-based-on-user-stories">From Legacy Docs to Modular Docs Based on User Stories</a> in Mojo.</p>
 </li>
 </ul>
 </div>
@@ -572,58 +580,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect3">
-<h4 id="a-simple-example-of-a-modular-guide"><a class="anchor" href="#a-simple-example-of-a-modular-guide"></a><a class="link" href="#a-simple-example-of-a-modular-guide">2.3. A Simple Example of a Modular Guide</a></h4>
+<h4 id="modular-documentation-repositories"><a class="anchor" href="#modular-documentation-repositories"></a><a class="link" href="#modular-documentation-repositories">2.3. Modular Documentation Repositories</a></h4>
 <div class="paragraph">
-<p>Download and unzip <a href="https://github.com/redhat-documentation/modular-docs/blob/master/modular-docs-manual/files/simple-mod-guide-repo.zip">an example modular guide</a>. The <code>simple-mod-guide-repo</code> directory included in the ZIP archive contains a very simple example of a modular guide with assemblies and modules. This section explains the contents of the directory.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-To build the example guide, change into the <code>simple-mod-guide-repo</code> directory, issue the <strong>asciidoctor master.adoc</strong> command, and open the resulting <code>master.html</code> file in your browser.
-</td>
-</tr>
-</table>
+<p>Due to many factors that determine repository design for individual products, these modular documentation guidelines do not provide a strict documentation repository template.</p>
 </div>
 <div class="paragraph">
-<p>The contents of the directory displayed in a tree-like format:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>.
-├── <strong>attributes.adoc</strong> <em>&lt;-- File with attributes for the whole book.</em>
-├── <strong>docs</strong> <em>&lt;-- Directory with assemblies and modules.</em>
-│   ├── <strong>assembly-1.adoc</strong> <em>&lt;-- Assembly files with include statements for modules.</em>
-│   ├── <strong>assembly-2.adoc</strong>
-│   └── <strong>modules</strong>
-│       ├── <strong>module-a.adoc</strong> <em>&lt;-- Module files.</em>
-│       ├── <strong>module-b.adoc</strong>
-│       ├── <strong>module-c.adoc</strong>
-│       └── <strong>module-d.adoc</strong>
-└── <strong>master.adoc</strong> <em>&lt;-- Master file that defines the whole book.</em></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To learn more about how a modular guide works, explore the files and directories in this example directory. For example, note that:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>master.adoc</code> pulls in the <code>attribute.adoc</code> file with AsciiDoc attributes, sets the title of the book, and pulls in the assemblies that comprise the book.</p>
-</li>
-<li>
-<p>Some of the module files (in the <code>modules</code> directory) demonstrate how to reuse a module in multiple assemblies.</p>
-</li>
-<li>
-<p>In <code>module-b.adoc</code>, the AsciiDoc conditional <code>ifeval</code> enables reusing the same module with some differences.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Feel free to experiment with the example guide: create new assemblies and modules, reuse modules, introduce new AsciiDoc conditionals.</p>
+<p>For a general repository structure used by documentation teams at Red Hat, see the example documentation repository and <code>README</code> file in the <a href="https://github.com/redhat-documentation/modular-docs/tree/mod-doc-repo-example"><code>mod-doc-repo-example</code></a> branch in this repository.</p>
 </div>
 </div>
 </div>
@@ -667,19 +629,23 @@ To build the example guide, change into the <code>simple-mod-guide-repo</code> d
 <div class="sect5">
 <h6 id="concept-module-guidelines"><a class="anchor" href="#concept-module-guidelines"></a><a class="link" href="#concept-module-guidelines">Concept Module Guidelines</a></h6>
 <div class="paragraph">
-<p>The required part of a procedure module is the concept explanation. Optionally, the module can also include an introduction and additional resources.</p>
+<p>The core requirement for a concept module is explaining the idea, or concept.
+A concept module requires a short introduction and optionally, can also include additional resources.</p>
 </div>
 <div class="paragraph">
-<p>When planning a concept module, look at nouns in related procedure modules and assemblies to find the concepts to explain to users. Explain only things that are visible to users. Even if a concept is interesting, it probably does not require explanation if it is not visible to users.</p>
+<p>When planning a concept module, look at nouns in related procedure modules and assemblies to find the concepts to explain to users.
+Explain only things that are visible to users.
+Even if a concept is interesting, it probably does not require an explanation if it is not visible to users.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/concept-diagram.png" alt="concept diagram">
 </div>
 </div>
-<div id="concept-writing-the-introduction" class="paragraph">
-<div class="title">Writing the Introduction</div>
-<p>The introduction to a concept module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the concept is useful without having to read the entire module.</p>
+<h7 id="_concept_introduction" class="discrete">Concept Introduction</h7>
+<div class="paragraph">
+<p>The introduction to a concept module is a single, concise paragraph that provides a short overview of the module.
+A short description makes the module more usable because users can quickly determine whether the concept is useful without having to read the entire module.</p>
 </div>
 <div class="paragraph">
 <p>The introduction typically answers the following questions:</p>
@@ -694,23 +660,72 @@ To build the example guide, change into the <code>simple-mod-guide-repo</code> d
 </li>
 </ul>
 </div>
-<div id="concept-writing-the-concept-explanation" class="paragraph">
-<div class="title">Writing the Concept Explanation</div>
-<p>The concept explanation describes the subject of the concept module.</p>
+<h7 id="_concept_body" class="discrete">Concept Body</h7>
+<div class="paragraph">
+<p>The concept body describes the subject of the concept module.</p>
 </div>
 <div class="paragraph">
-<p>Apart from paragraphs, you can use other AsciiDoc elements, such as lists, tables, or examples. Consider including graphics or diagrams to speed up the understanding of the concept.</p>
+<p>Apart from paragraphs, you can use other AsciiDoc elements, such as lists, tables, or examples.
+Consider including graphics or diagrams to speed up the understanding of the concept.</p>
 </div>
 <div class="paragraph">
-<p>Do not include any instructions to perform an action, such as executing a command. Action items belong in procedure modules. See also <a href="http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html">The Six Information Types</a> at <em>informationmapping.com</em> for ways to present different types of conceptual information: principle, concept, structure, process, fact.</p>
+<p>Do not include any instructions to perform an action, such as executing a command.
+Action items belong in procedure modules.
+See also <a href="http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html">The Six Information Types</a> at <em>informationmapping.com</em> for ways to present different types of conceptual information: principle, concept, structure, process, fact.</p>
 </div>
 <div class="paragraph">
-<div class="title">Writing Additional Resources</div>
-<p>The additional resources list links to other material closely related to the contents of the concept module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</p>
+<p>If the concept module is large and complex, consider splitting the concept module into multiple standalone concept modules. If you cannot split the module into meaningful standalone modules, consider using subheadings in the module to structure the content for improved reader navigation. If you use subheadings in a concept module, you can add the <code>[discrete]</code> tag to exclude each subheading from the table of contents, if needed. However, in many cases, subheadings are helpful to include in the table of contents to improve content searchability.</p>
+</div>
+<div class="paragraph">
+<p>The following examples illustrate a discrete and a standard subheading:</p>
+</div>
+<div class="listingblock">
+<div class="title">Example discrete subheading excluded from table of contents</div>
+<div class="content">
+<pre class="highlight"><code>= My concept module
+
+Concept introduction and body
+
+[discrete]
+== My concept module subheading
+
+More concept body content</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example subheading included in table of contents</div>
+<div class="content">
+<pre class="highlight"><code>= My concept module
+
+Concept introduction and body
+
+== My concept module subheading
+
+More concept body content</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can use subheadings in concept or reference modules, but not in procedure modules.
+</td>
+</tr>
+</table>
+</div>
+<h7 id="_concept_additional_resources" class="discrete">Concept Additional Resources</h7>
+<div class="paragraph">
+<p>The optional additional resources list links to other material closely related to the contents of the concept module, for example, other documentation resources.</p>
+</div>
+<div class="paragraph">
+<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_additional_resources_2"><a class="anchor" href="#_additional_resources_2"></a><a class="link" href="#_additional_resources_2">Additional Resources</a></h6>
+<h6 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a><a class="link" href="#_additional_resources">Additional Resources</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -740,7 +755,7 @@ To build the example guide, change into the <code>simple-mod-guide-repo</code> d
 <div class="title">Important</div>
 </td>
 <td class="content">
-A procedure module does not consist solely of a procedure. At the very least, the steps must be preceded by an introduction statement that provides context for the procedure. For details, see <a href="#writing-the-introduction">Writing the Introduction</a>.
+A procedure module does not consist solely of a procedure. At the very least, the steps must be preceded by an introductory statement that provides context for the procedure. For details, see <a href="#procedure-module-guidelines">Procedure Module Guidelines</a>.
 </td>
 </tr>
 </table>
@@ -757,8 +772,8 @@ A procedure module does not consist solely of a procedure. At the very least, th
 </div>
 <div class="title">Figure 2. Schema of a procedure module</div>
 </div>
-<div id="writing-the-introduction" class="paragraph">
-<div class="title">Writing the Introduction</div>
+<h7 id="_procedure_introduction" class="discrete">Procedure Introduction</h7>
+<div class="paragraph">
 <p>The introduction is a short description of the procedure. For example, it can be a lead-in sentence or an infinitive phrase (<em>To extract the certificate: &lt;steps&gt;</em>). See also <em>The IBM Style Guide</em> <sup class="footnote" id="_footnote_ibm-style-guide">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> for details on introducing procedures.</p>
 </div>
 <div class="paragraph">
@@ -780,30 +795,59 @@ A procedure module does not consist solely of a procedure. At the very least, th
 <div class="paragraph">
 <p>Keep the information brief and focused on what the user needs for this specific procedure. Suggested length is 1&#8212;&#8203;3 sentences, but it can be longer.</p>
 </div>
-<div id="writing-prerequisites" class="paragraph">
-<div class="title">Writing Prerequisites</div>
+<h7 id="_procedure_prerequisites" class="discrete">Procedure Prerequisites</h7>
+<div class="paragraph">
 <p>Prerequisites are conditions that must be satisfied before the user starts the procedure. If a prerequisite is a procedure or an assembly, include a link to them. See also <em>The IBM Style Guide</em> <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> for details on writing prerequisites.</p>
 </div>
 <div class="paragraph">
 <p>Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.</p>
 </div>
-<div id="writing-the-procedure" class="paragraph">
-<div class="title">Writing the Procedure</div>
+<div class="paragraph">
+<p>Use a bulleted list for prerequisites and the plural heading <strong>Prerequisites</strong>, even if you only have a single prerequisite.</p>
+</div>
+<h7 id="_procedure_body" class="discrete">Procedure Body</h7>
+<div class="paragraph">
 <p>The procedure consists of one or more steps required to complete the procedure. Each step describes one action.</p>
 </div>
 <div class="paragraph">
 <p>For single-step procedures, use an unnumbered bullet instead of a numbered list.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Not all numbered lists in documentation are procedures. You can also use numbered lists in any module type for non-procedural sequences, such as a process flow of system actions.
+</td>
+</tr>
+</table>
+</div>
+<h7 id="_procedure_verification" class="discrete">Procedure Verification</h7>
 <div class="paragraph">
-<div class="title">Writing Additional Resources</div>
-<p>Additional resources list links to other material closely related to the contents of the procedure module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</p>
+<p>This section is optional. Provide the user with one or more steps to verify that the procedure provided the intended outcome. This may consist of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An example of expected command output or pop-up window the user should receive when the procedure is successful</p>
+</li>
+<li>
+<p>An action (or actions) for the user, such as running a command, to determine the success or failure of the procedure</p>
+</li>
+</ul>
+</div>
+<h7 id="_procedure_additional_resources" class="discrete">Procedure Additional Resources</h7>
+<div class="paragraph">
+<p>The optional additional resources list links to other material closely related to the contents of the procedure module, for example, other documentation resources, instructional videos, or labs.</p>
 </div>
 <div class="paragraph">
-<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.</p>
+<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_additional_resources_3"><a class="anchor" href="#_additional_resources_3"></a><a class="link" href="#_additional_resources_3">Additional Resources</a></h6>
+<h6 id="_additional_resources_2"><a class="anchor" href="#_additional_resources_2"></a><a class="link" href="#_additional_resources_2">Additional Resources</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -905,13 +949,14 @@ A procedure module does not consist solely of a procedure. At the very least, th
 <div class="sect5">
 <h6 id="reference-module-guidelines"><a class="anchor" href="#reference-module-guidelines"></a><a class="link" href="#reference-module-guidelines">Reference Module Guidelines</a></h6>
 <div class="paragraph">
-<p>The required part of a reference module is the reference data. Optionally, the module can also include an introduction.</p>
+<p>The required part of a reference module is the reference data.
+A reference module requires a short introduction.</p>
 </div>
-<h7 id="_writing_the_introduction" class="discrete">Writing the Introduction</h7>
+<h7 id="_reference_introduction" class="discrete">Reference Introduction</h7>
 <div class="paragraph">
 <p>The introduction to a reference module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the reference is useful without having to read the entire module.</p>
 </div>
-<h7 id="_writing_the_reference" class="discrete">Writing the Reference</h7>
+<h7 id="_reference_body" class="discrete">Reference Body</h7>
 <div class="paragraph">
 <p>A reference module has a very strict structure, often in the form of a list or a table. A well-organized reference module enables users to scan it quickly to find the details they want.</p>
 </div>
@@ -931,9 +976,52 @@ A procedure module does not consist solely of a procedure. At the very least, th
 <div class="paragraph">
 <p>If you have a large volume of the same type of information to document, use a structure into which the information details can fit, and then document each logical unit of information as one reference module. For example, think of man pages, which document very different information details, but which still use consistent titles and formats to present those details in a uniform information structure.</p>
 </div>
+<div class="paragraph">
+<p>If the reference module is large and complex, consider splitting the reference module into multiple standalone reference modules. If you cannot split the module into meaningful standalone modules, consider using subheadings in the module to structure the content for improved reader navigation. If you use subheadings in a reference module, you can add the <code>[discrete]</code> tag to exclude each subheading from the table of contents, if needed. However, in many cases, subheadings are helpful to include in the table of contents to improve content searchability.</p>
+</div>
+<div class="paragraph">
+<p>The following examples illustrate a discrete and a standard subheading:</p>
+</div>
+<div class="listingblock">
+<div class="title">Example discrete subheading excluded from table of contents</div>
+<div class="content">
+<pre class="highlight"><code>= My reference module
+
+Reference introduction and body
+
+[discrete]
+== My reference module subheading
+
+More reference body content</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example subheading included in table of contents</div>
+<div class="content">
+<pre class="highlight"><code>= My reference module
+
+Reference introduction and body
+
+== My reference module subheading
+
+More reference body content</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can use subheadings in concept or reference modules, but not in procedure modules.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect5">
-<h6 id="_additional_resources_4"><a class="anchor" href="#_additional_resources_4"></a><a class="link" href="#_additional_resources_4">Additional Resources</a></h6>
+<h6 id="_additional_resources_3"><a class="anchor" href="#_additional_resources_3"></a><a class="link" href="#_additional_resources_3">Additional Resources</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -950,38 +1038,157 @@ A procedure module does not consist solely of a procedure. At the very least, th
 </div>
 </div>
 <div class="sect4">
-<h5 id="anchor-and-file-names"><a class="anchor" href="#anchor-and-file-names"></a><a class="link" href="#anchor-and-file-names">Anchor Names and File Names</a></h5>
-<div class="paragraph">
-<p>To optimize modular documentation, follow these guidelines for naming module anchors and files:</p>
+<h5 id="using_text_snippets_or_text_fragments_writing-mod-docs"><a class="anchor" href="#using_text_snippets_or_text_fragments_writing-mod-docs"></a><a class="link" href="#using_text_snippets_or_text_fragments_writing-mod-docs">Text Snippets or Text Fragments (Pseudo-modules)</a></h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The following standard is recommended when the documentation is being maintained without a Content Management System (CMS) capable of managing complex interrelations between modules.
+</td>
+</tr>
+</table>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Anchor names</dt>
-<dd>
-<p>Provide an anchor in the format <code>[id='anchor-name']</code> for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:</p>
-<div class="openblock">
-<div class="content">
+<div class="paragraph">
+<p>The use of reusable text snippet files (or text fragment files) is discouraged due to the complications that can arise due to the complexity they introduce.</p>
+</div>
+<div class="paragraph">
+<p>Snippet (fragment) file use should be limited to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standardized admonitions (such as 'Technology preview' and 'Beta' text).</p>
+</li>
+<li>
+<p>Where there is an existing standard between the upstream and downstream communities.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="module_anchor-and-file-names-concept"><a class="anchor" href="#module_anchor-and-file-names-concept"></a><a class="link" href="#module_anchor-and-file-names-concept">File Names and Anchors</a></h5>
+<div class="paragraph">
+<p>To optimize modular documentation, follow these guidelines for naming files and creating anchors:</p>
+</div>
+<div class="paragraph">
+<div class="title">File names</div>
+<p>Create assembly and module file names that accurately and closely reflect the title of the assembly or module. Create file names with the format <code>prefix-filename.adoc</code> or <code>prefix_filename.adoc</code> where <code>prefix</code> is one of the following module prefixes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>con</code>: Concept module prefix</p>
+</li>
+<li>
+<p><code>proc</code>: Procedure module prefix</p>
+</li>
+<li>
+<p><code>ref</code>: Reference module prefix</p>
+</li>
+<li>
+<p><code>assembly</code>: Assembly module prefix</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Examples</div>
+<ul>
+<li>
+<p><code>con-guided-decision-tables.adoc</code>  (Concept module)</p>
+</li>
+<li>
+<p><code>con_guided-decision-tables.adoc</code>  (Concept module)</p>
+</li>
+<li>
+<p><code>proc-creating-guided-decision-tables.adoc</code>  (Procedure module for creating)</p>
+</li>
+<li>
+<p><code>proc_creating-guided-decision-tables.adoc</code>  (Procedure module for creating)</p>
+</li>
+<li>
+<p><code>ref-guided-decision-table-examples.adoc</code>  (Reference module with examples)</p>
+</li>
+<li>
+<p><code>ref_guided-decision-table-examples.adoc</code>  (Reference module with examples)</p>
+</li>
+<li>
+<p><code>assembly-designing-guided-decision-tables.adoc</code>  (Assembly of guided decision table modules)</p>
+</li>
+<li>
+<p><code>assembly_designing-guided-decision-tables.adoc</code>  (Assembly of guided decision table modules)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not include special characters in file names. Ensure that all members of your team use the same file naming conventions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), include one of the following variables in each concept, procedure, and reference module before the module ID:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>[id='anchor-name']
+<pre class="highlight"><code>:_module-type: CONCEPT
+:_module-type: PROCEDURE
+:_module-type: REFERENCE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Anchors</div>
+<p>At the top of every module, provide an anchor in the format <code>[id="filename_{context}"]</code> where <code>filename</code> is the exact name of the file, without the file extension (<code>.adoc</code>). Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The  <code>context</code> variable is defined in each assembly module, for example <code>:context: my-context-value</code>. When you build an assembly, the value of the <code>context</code> variable replaces <code>context</code> in each module anchor ID and appears in the generated URL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[id="filename_{context}"]
 = Module Heading
 
-First sentence of topic.</code></pre>
+The first sentence of the topic.</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example 1. Concept Module</div>
 <div class="content">
-<pre class="highlight"><code>[id='guided-decision-tables']
+<pre class="highlight"><code>[id="con-guided-decision-tables_{context}"]
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Example 2. Procedure Module</div>
+<div class="title">Example 2. Concept Module</div>
 <div class="content">
-<pre class="highlight"><code>[id='creating-guided-decision-tables']
+<pre class="highlight"><code>[id="con_guided-decision-tables_{context}"]
+= Guided Decision Tables
+
+The guided decision tables feature works similarly to ...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 3. Procedure Module</div>
+<div class="content">
+<pre class="highlight"><code>[id="proc-creating-guided-decision-tables_{context}"]
+= Creating Guided Decision Tables
+
+You can use guided decision tables to ...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 4. Procedure Module</div>
+<div class="content">
+<pre class="highlight"><code>[id="proc_creating-guided-decision-tables_{context}"]
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...</code></pre>
@@ -996,56 +1203,19 @@ You can use guided decision tables to ...</code></pre>
 <td class="content">
 <div class="title">Note on Other Anchor Formats (Not Recommended)</div>
 <div class="paragraph">
-<p>The format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced properly. For details, see <a href="#reusing-modules">Reusing Modules in Assemblies</a>. Other anchor formats include <code>[[anchor-name]]</code> and <code>[#anchor-name]</code>, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.</p>
+<p>The anchor format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced correctly. For details, see <a href="#reusing-modules">Reusing Modules in Assemblies</a>. Other anchor formats include <code>[[anchor-name]]</code> and <code>[#anchor-name]</code>, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>For more information about Asciidoc anchors, see the <a href="http://asciidoctor.org/docs/user-manual/#anchordef">Asciidoctor User Manual</a>.</p>
-</div>
-</div>
-</div>
-</dd>
-<dt class="hdlist1">File names</dt>
-<dd>
-<p>Give the module file the same name as the anchor used in it (which is the same as or similar to the module heading), also separated by dashes. Add a prefix with an underscore to the file name to indicate the module type in the format <code>prefix_file-name</code>. Use <code>con_</code> for concept, <code>ref_</code> for reference, <code>proc_</code> for procedure, and <code>assembly_</code> for assembly.</p>
 <div class="ulist">
-<div class="title">Examples</div>
+<div class="title">Additional Resources</div>
 <ul>
 <li>
-<p><code>con_guided-decision-tables.adoc</code>  (Concept module)</p>
-</li>
-<li>
-<p><code>proc_creating-guided-decision-tables.adoc</code>  (Procedure module for creating)</p>
-</li>
-<li>
-<p><code>proc_editing-guided-decision-tables.adoc</code>  (Procedure module for editing)</p>
-</li>
-<li>
-<p><code>ref_guided-decision-table-examples.adoc</code>  (Reference module with examples)</p>
-</li>
-<li>
-<p><code>ref_guided-decision-table-columns.adoc</code>  (Reference module with column types)</p>
-</li>
-<li>
-<p><code>assembly_guided-decision-tables.adoc</code>  (Assembly of guided decision table modules)</p>
+<p><a href="https://asciidoctor.org/docs/user-manual/">Asciidoctor User Manual</a></p>
 </li>
 </ul>
-</div>
-</dd>
-</dl>
-</div>
-<div class="sect5">
-<h6 id="_additional_resources_5"><a class="anchor" href="#_additional_resources_5"></a><a class="link" href="#_additional_resources_5">Additional Resources</a></h6>
-<div class="ulist">
-<ul>
-<li>
-<p>The <a href="http://asciidoctor.org/docs/user-manual/#anchordef">Asciidoctor User Manual</a></p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -1065,9 +1235,9 @@ You can use guided decision tables to ...</code></pre>
 <div class="paragraph">
 <p>The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.</p>
 </div>
+<h6 id="_assembly_introduction" class="discrete">Assembly Introduction</h6>
 <div class="paragraph">
-<div class="title">Writing the Introduction</div>
-<p>The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.</p>
+<p>The introduction explains what the user accomplishes by working through the assembled modules. It typically provides context for the assembly.</p>
 </div>
 <div class="paragraph">
 <p>Consider rewording the user story to write the assembly introduction, for example:</p>
@@ -1082,28 +1252,31 @@ You can use guided decision tables to ...</code></pre>
 </li>
 </ul>
 </div>
+<h6 id="_assembly_prerequisites" class="discrete">Assembly Prerequisites</h6>
 <div class="paragraph">
-<div class="title">Writing Prerequisites</div>
-<p>Prerequisites are conditions that must be satisfied before the user can start following the assembly. For details, see <a href="#writing-prerequisites">Writing Prerequisites</a>.</p>
+<p>Prerequisites are conditions that must be satisfied before the user can start following the assembly and are applicable to all the modules in the assembly.</p>
 </div>
 <div class="paragraph">
-<div class="title">Adding Modules</div>
+<p>Use the second level heading syntax for the Prerequisites section in the assembly so that it is displayed in the table of contents and is consistent with the Additional resources or Next steps sections in the assembly.</p>
+</div>
+<h6 id="_assembly_modules" class="discrete">Assembly Modules</h6>
+<div class="paragraph">
 <p>List <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files">include files</a> to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.</p>
 </div>
+<h6 id="_assembly_additional_resources" class="discrete">Assembly Additional Resources</h6>
 <div class="paragraph">
-<div class="title">Adding Additional Resources</div>
-<p>Additional resources list links to other material closely related to the contents of the assembly: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</p>
+<p>The optional additional resources list links to other material closely related to the contents of the assembly, for example, other documentation resources, instructional videos, or labs.</p>
 </div>
 <div class="paragraph">
-<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.</p>
+<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_additional_resources_6"><a class="anchor" href="#_additional_resources_6"></a><a class="link" href="#_additional_resources_6">Additional Resources</a></h5>
+<h5 id="_additional_resources_4"><a class="anchor" href="#_additional_resources_4"></a><a class="link" href="#_additional_resources_4">Additional Resources</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Download the <a href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_ASSEMBLY_a_collection_of_modules.adoc">assembly template (adoc file)</a> for new projects.</p>
+<p>Download the <a href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_ASSEMBLY_a-collection-of-modules.adoc">assembly template (adoc file)</a> for new projects.</p>
 </li>
 <li>
 <p>For real-world examples of assemblies, see <a href="#modular-docs-assembly-examples">Assembly Examples</a>.</p>
@@ -1115,6 +1288,20 @@ You can use guided decision tables to ...</code></pre>
 <h5 id="reusing-modules"><a class="anchor" href="#reusing-modules"></a><a class="link" href="#reusing-modules">Reusing Modules in Assemblies</a></h5>
 <div class="paragraph">
 <p>When you create content in modules, you can use the same module multiple times in an assembly without having to replicate information in multiple source files. However, in order to facilitate module reuse, you must embed a document attribute variable in the anchor name for the module and then define that variable in the assembly each time the reused module appears. If the variable is not embedded and assigned, an error appears at build time reporting the duplicated anchor ID.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To determine which assemblies include a specific file, you can use your code editor to search the doc repo for instances of the file name. The search results will list every <code>include:</code> statement that specifies the file.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
 <div class="title">Example 3. Error at Build Time When Anchor Has No Variable</div>
@@ -1130,11 +1317,11 @@ $BUILD_PATH fails to validate</code></pre>
 <div class="paragraph">
 <p>This error is resolved by adding and defining a document variable.</p>
 </div>
-<h6 id="_procedure" class="discrete">Procedure</h6>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="olist discrete">
+<div class="title">Procedure</div>
+<ol class="discrete">
 <li>
-<p>In the module file that will be reused, add the <code>{context}</code> suffix with an underscore to the anchor name in the format <code>[id='anchor-name_{context}']</code>.</p>
+<p>In the module file that will be reused, add the <code>{context}</code> suffix with a hyphen to the anchor name in the format <code>[id="anchor-name_writing-mod-docs"]</code>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1150,19 +1337,19 @@ Although you can use any document variable that clearly indicates the variable i
 <div class="listingblock">
 <div class="title">Two Modules to Be Reused: Module A and Module B</div>
 <div class="content">
-<pre class="highlight"><code>[id='module-A-being-reused_{context}']
+<pre class="highlight"><code>[id="module-A-being-reused_{context}"]
 = Module A Heading</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>[id='module-B-being-reused_{context}']
+<pre class="highlight"><code>[id="module-B-being-reused_{context}"]
 = Module B Heading</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>In the assembly file or the master book file, define the <code>:context:</code> variable, separated by dashes, immediately above any included modules that are being reused, in the format <code>:context: variable-name</code>. How you define the variable depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.</p>
+<p>In the assembly file or the master book file, define the <code>:context:</code> variable immediately above any included modules that are being reused, in the format <code>:context: variable-name</code>. How you define the variable depends on whether the module is included once in multiple assemblies or is included multiple times in a single assembly. Note that the <code>:context:</code> variable definition uses hyphens to separate its terms.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Module Included Once in Multiple Assemblies</dt>
@@ -1171,29 +1358,29 @@ Although you can use any document variable that clearly indicates the variable i
 <div class="listingblock">
 <div class="title">Assembly 1</div>
 <div class="content">
-<pre class="highlight"><code>include::con_some-module-not-being-reused.adoc
+<pre class="highlight"><code>include::some-module-not-being-reused.adoc
 
 :context: assembly-1-name
-include::con_module-A-being-reused.adoc
+include::module-A-being-reused.adoc
 
-include::con_some-module-not-being-reused.adoc
+include::some-module-not-being-reused.adoc
 
 :context: assembly-1-name
-include::con_module-B-being-reused.adoc</code></pre>
+include::module-B-being-reused.adoc</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Assembly 2</div>
 <div class="content">
-<pre class="highlight"><code>include::con_some-module-not-being-reused.adoc
+<pre class="highlight"><code>include::some-module-not-being-reused.adoc
 
 :context: assembly-2-name
-include::con_module-A-being-reused.adoc
+include::module-A-being-reused.adoc
 
-include::con_some-module-not-being-reused.adoc
+include::some-module-not-being-reused.adoc
 
 :context: assembly-2-name
-include::con_module-B-being-reused.adoc</code></pre>
+include::module-B-being-reused.adoc</code></pre>
 </div>
 </div>
 </dd>
@@ -1203,15 +1390,15 @@ include::con_module-B-being-reused.adoc</code></pre>
 <div class="listingblock">
 <div class="title">Assembly</div>
 <div class="content">
-<pre class="highlight"><code>include::con_some-module-not-being-reused.adoc
+<pre class="highlight"><code>include::some-module-not-being-reused.adoc
 
 :context: section-1-name
-include::con_module-A-being-reused.adoc
+include::module-A-being-reused.adoc
 
-include::con_some-module-not-being-reused.adoc
+include::some-module-not-being-reused.adoc
 
 :context: section-2-name
-include::con_module-A-being-reused.adoc</code></pre>
+include::module-A-being-reused.adoc</code></pre>
 </div>
 </div>
 </dd>
@@ -1222,44 +1409,20 @@ include::con_module-A-being-reused.adoc</code></pre>
 <p>Return to the reused module file, and at the top of the file add a comment that identifies which assemblies the module has been added to. This helps to track reused modules in the future.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>// Module included in the following assemblies:
-//
-// ...
-
-[id='module-A-being-reused_{context}']
+<pre class="highlight"><code>[id="module-A-being-reused_{context}"]
 = Module A Heading</code></pre>
 </div>
 </div>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="title">Cross-Referencing Reused Modules</div>
-<div class="paragraph">
-<p>To cross-reference a reused module, specify both the anchor name and the <code>{context}</code> variable as defined in the assembly:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>xref:anchor-name_context-variable-name[]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>For details, see xref:module-A-being-reused_assembly-1-name[].</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
+<div class="ulist">
+<div class="title">Additional Resources</div>
+<ul>
+<li>
+<p>The <a href="http://asciidoctor.org/docs/user-manual/#include-multiple">Asciidoctor User Manual</a>.</p>
+</li>
+</ul>
 </div>
 <h6 id="_practical_example_1_reusing_modules_in_multiple_assemblies" class="discrete">Practical Example 1: Reusing Modules in Multiple Assemblies</h6>
 <div class="paragraph">
@@ -1269,26 +1432,16 @@ include::con_module-A-being-reused.adoc</code></pre>
 <p>The module files contain the following content:</p>
 </div>
 <div class="listingblock">
-<div class="title">con_projects.adoc</div>
+<div class="title">projects.adoc</div>
 <div class="content">
-<pre class="highlight"><code>// Module included in the following assemblies:
-//
-// assembly_asset-definitions.adoc
-// assembly_business-rules.adoc
-
-[id='projects_{context}']
+<pre class="highlight"><code>[id="projects_{context}"]
 = Projects</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">proc_creating-assets.adoc</div>
+<div class="title">creating-assets.adoc</div>
 <div class="content">
-<pre class="highlight"><code>// Module included in the following assemblies:
-//
-// assembly_asset-definitions.adoc
-// assembly_business-rules.adoc
-
-[id='creating-assets_{context}']
+<pre class="highlight"><code>[id="creating-assets_{context}"]
 = Creating Assets</code></pre>
 </div>
 </div>
@@ -1296,39 +1449,39 @@ include::con_module-A-being-reused.adoc</code></pre>
 <p>The assembly files contain the following content:</p>
 </div>
 <div class="listingblock">
-<div class="title">assembly_asset-definitions.adoc</div>
+<div class="title">asset-definitions.adoc</div>
 <div class="content">
-<pre class="highlight"><code>include::con_organizational-unit.adoc
+<pre class="highlight"><code>include::organizational-unit.adoc
 
-include::con_repository.adoc
-
-:context: asset-definitions
-include::con_projects.adoc
-
-include::con_organizational-unit.adoc
-
-include::proc_creating-packages.adoc
+include::repository.adoc
 
 :context: asset-definitions
-include::proc_creating-assets.adoc
+include::projects.adoc
 
-include::proc_adding-dependencies.adoc</code></pre>
+include::organizational-unit.adoc
+
+include::creating-packages.adoc
+
+:context: asset-definitions
+include::creating-assets.adoc
+
+include::adding-dependencies.adoc</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">assembly_business-rules.adoc</div>
+<div class="title">business-rules.adoc</div>
 <div class="content">
-<pre class="highlight"><code>include::con_business-processes.adoc
+<pre class="highlight"><code>include::business-processes.adoc
 
 :context: business-rules
-include::con_projects.adoc
+include::projects.adoc
 
-include::ref_project-types.adoc
+include::project-types.adoc
 
-include::con_packages.adoc
+include::packages.adoc
 
 :context: business-rules
-include::proc_creating-assets.adoc</code></pre>
+include::creating-assets.adoc</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1355,9 +1508,9 @@ include::proc_creating-assets.adoc</code></pre>
 <p>The module file contains the following content:</p>
 </div>
 <div class="listingblock">
-<div class="title">con_projects.adoc</div>
+<div class="title">projects.adoc</div>
 <div class="content">
-<pre class="highlight"><code>[id='projects_{context}']
+<pre class="highlight"><code>[id="projects_{context}"]
 = Projects</code></pre>
 </div>
 </div>
@@ -1365,19 +1518,19 @@ include::proc_creating-assets.adoc</code></pre>
 <p>The assembly file contains the following content:</p>
 </div>
 <div class="listingblock">
-<div class="title">assembly_business-rules.adoc</div>
+<div class="title">business-rules.adoc</div>
 <div class="content">
 <pre class="highlight"><code>:context: intro
-include::con_projects.adoc
+include::projects.adoc
 
-include::con_organizational-unit.adoc
+include::organizational-unit.adoc
 
-include::ref_asset-types.adoc
+include::asset-types.adoc
 
 :context: asset-types
-include::con_projects.adoc
+include::projects.adoc
 
-include::con_dependencies.adoc</code></pre>
+include::dependencies.adoc</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1396,13 +1549,66 @@ include::con_dependencies.adoc</code></pre>
 <pre class="highlight"><code>For details, see xref:projects_asset-types[].</code></pre>
 </div>
 </div>
-<h6 id="_additional_resources_7" class="discrete">Additional Resources</h6>
-<div class="ulist">
-<ul>
+</div>
+<div class="sect4">
+<h5 id="nesting-assemblies"><a class="anchor" href="#nesting-assemblies"></a><a class="link" href="#nesting-assemblies">Nesting Assemblies in Assemblies</a></h5>
+<div class="paragraph">
+<p>When you set the <code>:context:</code> variable in an assembly, the variable continues to be set to the same value in the rest of the document even after the assembly itself ends. This causes problems if you include an assembly in another assembly.</p>
+</div>
+<div class="paragraph">
+<p>If there is, for example, an <em>Additional Resources</em> section in the inner, included assembly as well as in the outer, including assembly after the include statements, the ID of the second one gets overwritten with the <code>:context:</code> variable of the included assembly. This causes duplicate IDs, which lead to build-time errors like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>asciidoctor: WARNING: 1.adoc: line 19: id assigned to section already in use: additional-resources-2</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Nested Assemblies with a Duplicate ID</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/nested-assemblies-error.png" alt="Nested Assemblies with a Duplicate ID" width="500">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To solve this problem, restore the <code>:context:</code> variable to its previous value when assemblies end:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>The <a href="http://asciidoctor.org/docs/user-manual/#include-multiple">Asciidoctor User Manual</a>.</p>
+<p>Add the following line at the top of your assemblies before <code>:context:</code> is defined to save the inherited context:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">ifdef::context[:parent-context: {context}]</code></pre>
+</div>
+</div>
 </li>
-</ul>
+<li>
+<p>Add the following lines to the end of your assemblies to restore the saved context, if one already existed:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Correctly Nested Assemblies</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/nested-assemblies-correct.png" alt="Correctly Nested Assemblies" width="500">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See also the <a href="https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_ASSEMBLY_a-collection-of-modules.adoc">assembly template</a> for an example.</p>
 </div>
 </div>
 </div>
@@ -1420,15 +1626,12 @@ include::con_dependencies.adoc</code></pre>
 </dd>
 <dt class="hdlist1">Module</dt>
 <dd>
-<p>A building block of information with a well-organized structure.</p>
-<div class="paragraph">
-<p>Because modules are written as context-free elements independent of other modules, they are re-usable: one module can be part of multiple assemblies.</p>
-</div>
+<p>An independent, self-contained chunk of information with a well-organized structure. Each module is information that a reader can understand and use by itself. A writer can use a module as a standalone article or as part of a larger body of work (an "Assembly"). A module does not depend on other documents, but it can refer the reader to other documents as additional resources. Because a module is self-contained, it must have a clear title that briefly and clearly summarizes the subject of the module. Moreover, because modules are written as context-free elements independent of other modules, they are re-usable. One module can be part of multiple assemblies.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Concept Module</dt>
 <dd>
-<p>Explains a concept; i.e. not action-based.</p>
+<p>Explains a concept; for example, not action-based.</p>
 </dd>
 <dt class="hdlist1">Procedure Module</dt>
 <dd>
@@ -1445,14 +1648,110 @@ include::con_dependencies.adoc</code></pre>
 <dd>
 <p>A short description of something the user does to achieve a goal.</p>
 <div class="paragraph">
-<p>Example: As an administrator, I want to set up authentication to a critical system in my infrastructure (gateway VPN, accounting system) to only allow users authenticated via strong authentication methods (two-factor authentication).</p>
+<p>Example: As an administrator, I want to set up authentication to a critical system in my infrastructure, such as a gateway VPN, or accounting system to only allow users authenticated via strong authentication methods, for example two-factor authentication.</p>
 </div>
 <div class="paragraph">
 <p>As opposed to a <em>use case</em>, which is a description of interactions between the system and the user or other systems.</p>
 </div>
-<div class="paragraph">
-<p>For details, see <a href="https://mojo.redhat.com/groups/ccs/blog/2016/11/24/user-stories-and-use-cases-whats-the-difference">User Stories and Use Cases: What&#8217;s the Difference?</a> in Mojo.</p>
+<table class="tableblock frame-all grid-rows stretch">
+<caption class="title">Table 1. Contrasting User Stories and Use Cases</caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 45%;">
+<col style="width: 45%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">User Story</th>
+<th class="tableblock halign-left valign-top">Use Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definitions:</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A short description of something the user does to achieve a goal.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A description of interactions between the system and the user, components of the system, or the system and other systems.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Views the situation from:</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The perspective of a user.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The perspective of a product and its features.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Focuses on:</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The outcome as perceived by the user.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>What the product does and how it does it, which includes product requirements, specification, scope.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example:</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>As an office worker, I want to be able to easily switch between standing and sitting, so that I prevent back pain and other health issues associated with prolonged periods of sitting at a computer.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This user story follows a common template for user stories in the form of "As a &lt;type_of_user&gt;, I want &lt;some_goal&gt; so that &lt;some_reason&gt;."
+</td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Ergonomic work space solution - a standing desk that allows switching between standing and sitting. The standing desk:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Is motorized, with a button a person can press to adjust the height; the height must span up to 150 cm to be usable also by people 200 cm tall.</p>
+</li>
+<li>
+<p>Is made from easy-to-clean and durable material to withstand standard office conditions, such as spilled tea or scratches: table top - polyester, legs - steel.</p>
+</li>
+<li>
+<p>Has large enough work surface to comfortably fit 2 monitors, one laptop docking station, small personal items.</p>
+</li>
+<li>
+<p>Can hold the weight of 100 kg, such as standard office equipment and a person sitting on the desk.</p>
+</li>
+<li>
+<p>Meets safety requirements per EU standards for office equipment.</p>
+</li>
+<li>
+<p>Has attractive design to fit in modern office spaces.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+A use case like this can also include other ergonomic solutions, such as an adjustable sit-stand wall mount for monitors and compare their parameters, such as ease of installation, price, and ease of use.
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1461,7 +1760,7 @@ include::con_dependencies.adoc</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To fulfill their purpose, user stories must be defined based on customer needs. Therefore, they must be produced by customer-facing associates (such as product management or field teams), not by writers. Writers can only help polish the user stories if required.</p>
+<p>To fulfill their purpose, user stories must be defined based on customer needs. Therefore, they must be produced by customer-facing associates, such as product management or field teams, not by writers. Writers can only help polish the user stories if required.</p>
 </div>
 <div class="paragraph">
 <p>If your team does not have user stories, do not write them yourselves. Instead, ask the stakeholders for your product to provide them to you.</p>
@@ -1477,7 +1776,7 @@ include::con_dependencies.adoc</code></pre>
 </dd>
 <dt class="hdlist1">Modular docs</dt>
 <dd>
-<p>Docs structured into modules and assemblies.</p>
+<p>Documents structured into modules and assemblies.</p>
 </dd>
 </dl>
 </div>
@@ -1499,19 +1798,19 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <div class="sect3">
 <h4 id="modular-docs-concept-examples"><a class="anchor" href="#modular-docs-concept-examples"></a><a class="link" href="#modular-docs-concept-examples">B.1. Concept Module Examples</a></h4>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/overview-of-the-containerized-ipa-services#overview-containers-available-container-images">Available Container Images</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/creating_red_hat_process_automation_manager_business_applications_with_spring_boot/index#bus_app_business-applications">Red Hat Process Automation Manager business applications</a></p>
 </div>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/colocation-of-containerized-ceph-daemons#how-colocation-works-and-its-advantages">How Colocation Works and Its Advantages</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html-single/architecture/index#cicd_gitops_methodology">The GitOps methodology and practice</a></p>
 </div>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_interconnect/#syntax_for_using_literal_qdstat_literal">Syntax for Using qdstat</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html-single/using_amq_online_on_openshift_container_platform/index#con-intro-roles-using-messaging">AMQ Online user roles</a></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="modular-docs-procedure-examples"><a class="anchor" href="#modular-docs-procedure-examples"></a><a class="link" href="#modular-docs-procedure-examples">B.2. Procedure Module Examples</a></h4>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host#sssd-services-on-host-enrolling-to-an-ipa-domain-using-an-sssd-container">Enrolling to an Identity Management Domain Using an SSSD Container</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html-single/installing/index#installation-mirror-repository_installing-restricted-networks-preparations">Mirroring the OpenShift Container Platform image repository</a></p>
 </div>
 <div class="paragraph">
 <p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/uninstalling-sssd-containers#uninstalling-sssd-containers-uninstalling-an-sssd-container-enrolled-in-an-ipa-domain">Uninstalling an SSSD Container Enrolled in an Identity Management Domain</a></p>
@@ -1523,22 +1822,25 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <div class="sect3">
 <h4 id="modular-docs-reference-examples"><a class="anchor" href="#modular-docs-reference-examples"></a><a class="link" href="#modular-docs-reference-examples">B.3. Reference Module Examples</a></h4>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_interconnect/#managing_network_connections">Managing Listeners</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/changes-in-ansible-variables-between-version-2-and-3-container">Changes in Ansible Variables Between Version 2 and 3</a></p>
 </div>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/changes-in-ansible-variables-between-version-2-and-3">Changes in Ansible Variables Between Version 2 and 3</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html-single/using_amq_online_on_openshift_container_platform/#retrieving-address-space-information-messaging">Example commands for retrieving address space information</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/interacting_with_red_hat_process_automation_manager_using_kie_apis/index#ejb-api-services-ref_kie-apis">Supported EJB services</a></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="modular-docs-assembly-examples"><a class="anchor" href="#modular-docs-assembly-examples"></a><a class="link" href="#modular-docs-assembly-examples">B.4. Assembly Examples</a></h4>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host">Configuring the SSSD Container to Provide Identity and Authentication Services on Atomic Host</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/packaging_and_deploying_a_red_hat_process_automation_manager_project/index">Packaging and deploying a Red Hat Process Automation Manager project</a></p>
 </div>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/ceph_file_system_guide/deploying-ceph-file-systems">Deploying Ceph File Systems</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/designing_a_decision_service_using_spreadsheet_decision_tables/index">Designing a decision service using spreadsheet decision tables</a></p>
 </div>
 <div class="paragraph">
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_mobile_application_platform/4.2/html/mbaas_administration_and_installation_guide/backing-up-an-mbaas">Backing up an MBaaS</a></p>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_build_of_quarkus/1.3/html-single/getting_started_with_red_hat_build_of_quarkus/index">Getting started with Red Hat Build of Quarkus</a></p>
 </div>
 </div>
 </div>
@@ -1550,9 +1852,8 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <div class="paragraph">
 <p>The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need).</p>
 </div>
-<div class="sect3">
-<h4 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a><a class="link" href="#_prerequisites">C.1. Prerequisites</a></h4>
 <div class="ulist">
+<div class="title">Prerequisites</div>
 <ul>
 <li>
 <p>You should understand what modular documentation is:</p>
@@ -1590,9 +1891,8 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </li>
 </ul>
 </div>
-</div>
 <div class="sect3">
-<h4 id="customer-product-lifecycle"><a class="anchor" href="#customer-product-lifecycle"></a><a class="link" href="#customer-product-lifecycle">C.2. Overview of the Customer Product Lifecycle</a></h4>
+<h4 id="customer-product-lifecycle"><a class="anchor" href="#customer-product-lifecycle"></a><a class="link" href="#customer-product-lifecycle">C.1. Overview of the Customer Product Lifecycle</a></h4>
 <div class="paragraph">
 <p>User stories are the basis of modular documentation. The modular documentation conversion workflow uses the <em>customer product lifecycle</em> to help you discover and develop the user stories that your documentation should include.</p>
 </div>
@@ -1637,7 +1937,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </div>
 </div>
 <div class="sect3">
-<h4 id="defining-user-stories"><a class="anchor" href="#defining-user-stories"></a><a class="link" href="#defining-user-stories">C.3. Defining User Stories for Your Product</a></h4>
+<h4 id="defining-user-stories"><a class="anchor" href="#defining-user-stories"></a><a class="link" href="#defining-user-stories">C.2. Defining User Stories for Your Product</a></h4>
 <div class="paragraph">
 <p>User stories provide the context and structure from which you can determine which assemblies and modules to create.</p>
 </div>
@@ -1650,8 +1950,8 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <div class="paragraph">
 <p>Of course, every product differs in terms of tools, processes, team dynamics, and access to SMEs. Since you are most familiar with these aspects for your own team, you will need to adapt this general approach for your own team. Depending on your team structure, each step can be completed by either a writer or a collaboration between a writer and Content Strategist.</p>
 </div>
-<h5 id="_procedure_2" class="discrete">Procedure</h5>
 <div class="olist arabic">
+<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Identify the key, top-level user stories for your product.</p>
@@ -1670,7 +1970,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <p>For example, here is a top-level user story for the <em>Configure and Verify</em> phase of the customer product lifecycle:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Creating Top-Level User Stories</div>
+<div class="title">Example 6. Creating Top-Level User Stories</div>
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1698,7 +1998,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <p>For example, for the <em>Configure and Verify</em> phase, users would need to know how to configure and set up each component or feature of the product to work in their environment. You could break it down like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Creating Second-Level User Stories</div>
+<div class="title">Example 7. Creating Second-Level User Stories</div>
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1742,7 +2042,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <p>For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories&#8201;&#8212;&#8201;the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Creating Additional User Stories</div>
+<div class="title">Example 8. Creating Additional User Stories</div>
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1806,7 +2106,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </ul>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Breaking Down User Stories</div>
+<div class="title">Example 9. Breaking Down User Stories</div>
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1850,22 +2150,22 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </div>
 </div>
 <div class="sect3">
-<h4 id="creating-assemblies"><a class="anchor" href="#creating-assemblies"></a><a class="link" href="#creating-assemblies">C.4. Creating Assemblies</a></h4>
+<h4 id="creating-assemblies"><a class="anchor" href="#creating-assemblies"></a><a class="link" href="#creating-assemblies">C.3. Creating Assemblies</a></h4>
 <div class="paragraph">
 <p>An assembly is a representation of a user story, so you need to create an assembly for each user story that you defined.</p>
 </div>
 <div class="paragraph">
 <p>An assembly could represent an article, "chapter" in a book, or even an entire book. However, one of the benefits of modular documentation is that you do not need to worry about how the assembly will ultimately be used&#8201;&#8212;&#8201;each assembly represents a user goal, and once you create it, it can be "included" anywhere it is needed (a publication, within another assembly, and so on).</p>
 </div>
-<h5 id="_procedure_3" class="discrete">Procedure</h5>
 <div class="olist arabic">
+<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Create an assembly file for each user story that you identified.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Be sure to follow the conventions for <a href="#anchor-and-file-names">naming anchors and files</a>. For example: <code>assembly_guided-decision-tables.adoc</code></p>
+<p>Be sure to follow the conventions for <a href="#anchor-and-file-names">naming anchors and files</a>. For example: <code>guided-decision-tables.adoc</code></p>
 </div>
 </div>
 </div>
@@ -1883,26 +2183,26 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </div>
 </div>
 <div class="sect3">
-<h4 id="creating-modules"><a class="anchor" href="#creating-modules"></a><a class="link" href="#creating-modules">C.5. Creating Modules</a></h4>
+<h4 id="creating-modules"><a class="anchor" href="#creating-modules"></a><a class="link" href="#creating-modules">C.4. Creating Modules</a></h4>
 <div class="paragraph">
 <p>After identifying and creating the assemblies, each assembly should identify the modules that you need to create.</p>
 </div>
-<h5 id="_procedure_4" class="discrete">Procedure</h5>
 <div class="olist arabic">
+<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>For each assembly that you created, create a module file for each module that is identified in the assembly.</p>
+<div class="openblock">
+<div class="content">
 <div class="paragraph">
 <p>Each assembly should already have the names of the modules that should be included in the assembly. Now you just need to create the actual files for those modules.</p>
 </div>
-</li>
-</ol>
-</div>
 <div class="paragraph">
-<p>Be sure to follow the conventions for <a href="#anchor-and-file-names">naming anchors and files</a>. For example: <code>con_guided-decision-tables.adoc</code></p>
+<p>Be sure to follow the conventions for <a href="#anchor-and-file-names">naming anchors and files</a>. For example: <code>guided-decision-tables.adoc</code></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</div>
+</div>
+</li>
 <li>
 <p>For each module file that you created, add content.</p>
 <div class="openblock">
@@ -1930,12 +2230,12 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </div>
 </div>
 <div class="sect3">
-<h4 id="auditing"><a class="anchor" href="#auditing"></a><a class="link" href="#auditing">C.6. Auditing Your Feature-Based Manual</a></h4>
+<h4 id="auditing"><a class="anchor" href="#auditing"></a><a class="link" href="#auditing">C.5. Auditing Your Feature-Based Manual</a></h4>
 <div class="paragraph">
 <p>In the process of adding content to the modules from your existing feature-based manual, it is likely that there is some existing content that did not fit into any of the user stories that you identified and thus was not pulled out. It is important to identify this content to ensure that it is no longer needed.</p>
 </div>
-<h5 id="_procedure_5" class="discrete">Procedure</h5>
 <div class="olist arabic">
+<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Go through your existing feature-based manual and identify any content that you did not add to an assembly or module.</p>
@@ -1948,10 +2248,10 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 <p>If the content does not fit into a user story or assembly, then it stands to reason that it may not be necessary to complete any particular user goal. If this is the case, you should be able to discard it.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Handling Extraneous Content</div>
+<div class="title">Example 10. Handling Extraneous Content</div>
 <div class="content">
 <div class="paragraph">
-<p>For example, many feature-based manuals contain detailed sections about how a particular feature works. This type of content, which valuable in certain contexts, is not always necessary for user documentation&#8201;&#8212;&#8201;user goals generally involve <em>doing</em> something, not understanding how all the details work. When you encounter this type of content, ask yourself whether a user would need to understand it in order to accomplish any of their goals (planning, installing, configuring, managing, and so on). If the answer is no, then you can probably discard it.</p>
+<p>For example, many feature-based manuals contain detailed sections about how a particular feature works. This type of content, which is valuable in certain contexts, is not always necessary for user documentation&#8201;&#8212;&#8201;user goals generally involve <em>doing</em> something, not understanding how all the details work. When you encounter this type of content, ask yourself whether a user would need to understand it to accomplish any of their goals (planning, installing, configuring, managing, and so on). If the answer is no, then you can probably discard it.</p>
 </div>
 </div>
 </div>
@@ -2059,7 +2359,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-08 14:47:31 +0100
+Last updated 2021-05-29 17:40:37 +0200
 </div>
 </div>
 </body>
