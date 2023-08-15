@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-08-15T12:40:22.587Z" agent="5.0 (X11)" etag="zLJJGuDdscg6dEG2Vzu1" version="15.5.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-08-15T13:27:54.202Z" agent="5.0 (X11)" etag="2n5-ALZjYgz_mULC71lB" version="15.5.0" type="github">
   <diagram id="pX8wVDH-IkX9QpO-7R4u" name="Page-1">
     <mxGraphModel dx="512" dy="339" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -13,25 +13,16 @@
         <mxCell id="fGTqdcgiN-9NYtmqQ6RH-3" value="client02.idm.example.com" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="340" y="70" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-4" value="Jane" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-4" value="Alice" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="141" y="185" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="fGTqdcgiN-9NYtmqQ6RH-6" value="John" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="291" y="185" width="80" height="80" as="geometry" />
+          <mxGeometry x="363" y="186" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-8" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="fGTqdcgiN-9NYtmqQ6RH-2">
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-10" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="fGTqdcgiN-9NYtmqQ6RH-6">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="201" y="190" as="sourcePoint" />
-            <mxPoint x="301" y="190" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-9" value="&lt;div&gt;SSH&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-8">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-10" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.763;exitY=0.038;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fGTqdcgiN-9NYtmqQ6RH-6" target="fGTqdcgiN-9NYtmqQ6RH-3">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="341" y="185" as="sourcePoint" />
-            <mxPoint x="441" y="185" as="targetPoint" />
+            <mxPoint x="400" y="181" as="sourcePoint" />
+            <mxPoint x="400" y="130" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="fGTqdcgiN-9NYtmqQ6RH-11" value="&lt;div&gt;SSH&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-10">
@@ -41,7 +32,7 @@
           <mxGeometry x="141" y="302" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="fGTqdcgiN-9NYtmqQ6RH-13" value="admins (group)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="120" y="170" width="120" height="230" as="geometry" />
+          <mxGeometry x="121" y="172" width="120" height="230" as="geometry" />
         </mxCell>
         <mxCell id="fGTqdcgiN-9NYtmqQ6RH-14" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;exitX=0.175;exitY=-0.009;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="fGTqdcgiN-9NYtmqQ6RH-13" target="fGTqdcgiN-9NYtmqQ6RH-1">
           <mxGeometry relative="1" as="geometry">
@@ -49,8 +40,42 @@
             <mxPoint x="320" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-15" value="SSH, then SUDO" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;fillColor=none;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-14">
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-15" value="&lt;div&gt;SSH + SUDO&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;fillColor=none;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-14">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-16" value="Jane" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="263" y="247" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-17" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="fGTqdcgiN-9NYtmqQ6RH-16" target="fGTqdcgiN-9NYtmqQ6RH-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="220" as="sourcePoint" />
+            <mxPoint x="320" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-18" value="&lt;div&gt;SSH&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;fillColor=none;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="9" y="13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-19" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;exitX=0.45;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="fGTqdcgiN-9NYtmqQ6RH-13" target="fGTqdcgiN-9NYtmqQ6RH-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="151" y="177.93" as="sourcePoint" />
+            <mxPoint x="120" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-20" value="SSH + SUDO" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;fillColor=none;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-21" value="" style="endArrow=classic;html=1;rounded=0;fontSize=10;startSize=1;endSize=1;entryX=0.192;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.925;exitY=0.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fGTqdcgiN-9NYtmqQ6RH-13" target="fGTqdcgiN-9NYtmqQ6RH-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="160" as="sourcePoint" />
+            <mxPoint x="265" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fGTqdcgiN-9NYtmqQ6RH-22" value="SSH + SUDO" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=10;fillColor=none;" connectable="0" vertex="1" parent="fGTqdcgiN-9NYtmqQ6RH-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="22" y="-8" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
